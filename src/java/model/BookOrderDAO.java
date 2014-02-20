@@ -76,6 +76,7 @@ public class BookOrderDAO implements BookOrderDAOStrategy{
             customer.setCity((String)(customer_list.get(i).get("city")));
             customer.setState((String)(customer_list.get(i).get("state")));
             customer.setZip((String)(customer_list.get(i).get("zip")));
+            customer.setCreditCardNumber((String)(customer_list.get(i).get("credit_card_number")));
             
             customers.add(customer);
         }

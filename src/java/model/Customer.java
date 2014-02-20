@@ -19,12 +19,13 @@ public class Customer {
     private String city;
     private String state;
     private String zip;
+    private String creditCardNumber;
 
     public Customer() {
     }
 
     
-    public Customer(int customer_id, String firstName, String lastName, String email, String phone, String street, String city, String state, String zip) {
+    public Customer(int customer_id, String firstName, String lastName, String email, String phone, String street, String city, String state, String zip, String creditCardNumber) {
         this.customer_id = customer_id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +35,7 @@ public class Customer {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.creditCardNumber = creditCardNumber;
     }
 
     public String getCity() {
@@ -108,10 +110,19 @@ public class Customer {
         this.zip = zip;
     }
 
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
     @Override
     public String toString() {
         return "Customer ID: " + customer_id + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nEmail: " + 
-                email + "\nPhone Number: " + phone + "\nAddress: " + street + "\n" + city + ", " + state + " " + zip;
+                email + "\nPhone Number: " + phone + "\nAddress: " + street + "\n" + city + ", " + state + " " + zip 
+                + "\nCredit Card Number: " + creditCardNumber;
     }
 
     @Override
