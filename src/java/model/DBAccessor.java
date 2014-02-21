@@ -17,4 +17,14 @@ public interface DBAccessor {
     
     public abstract List findAllRecords(String tableName, boolean closeConnection) throws SQLException,
 			Exception;
+    
+    public abstract boolean insertRecord(String tableName, List columnNames, List columnValues, boolean closeConnection)
+            throws SQLException, Exception;
+    
+    public abstract int updateRecord(String tableName, List columnNames, List columnValues, String whereField, 
+            Object whereValue, boolean closeConnection)
+            throws SQLException, Exception;
+    
+    public abstract int deleteRecord(String tableName, String whereField, Object whereValue, boolean closeConnection)
+	throws SQLException, Exception;
 }

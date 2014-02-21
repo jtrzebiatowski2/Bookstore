@@ -8,8 +8,11 @@ import java.util.List;
  * @version 1.0
  */
 public interface BookOrderDAOStrategy {
-    List<Book> getBookList();
-    List<Customer> getCustomerList();
-    List<Order> getOrders();
-    List<OrderDetail> getOrderDetails();
+    public abstract List<Book> getBookList();
+    public abstract List<Customer> getCustomerList();
+    public abstract List<Order> getOrders();
+    public abstract List<OrderDetail> getOrderDetails();
+    public abstract void addBook(Book book);
+    public abstract void updateBook(Book book);
+    public abstract void deleteBook(Book book);
 }
