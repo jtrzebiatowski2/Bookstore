@@ -19,7 +19,7 @@ public class BookOrderDAO implements BookOrderDAOStrategy{
     private static final String PASSWORD = "tiburon87";
     private static final String BOOK_TABLE_NAME = "book";
     private static final String CUSTOMER_TABLE_NAME = "customer";
-    private static final String ORDER_TABLE_NAME = "order";
+    private static final String ORDER_TABLE_NAME = "book_order";
     private static final String ORDER_DETAIL_TABLE_NAME = "order_details";
     
     public BookOrderDAO(){
@@ -40,6 +40,7 @@ public class BookOrderDAO implements BookOrderDAOStrategy{
             book.setTitle((String)(book_list.get(i).get("title")));
             book.setDescription((String)(book_list.get(i).get("description")));
             book.setPrice((Double)(book_list.get(i).get("price")));
+            book.setAuthor((String)(book_list.get(i).get("author")));
             books.add(book);
         }
             

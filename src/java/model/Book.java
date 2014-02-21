@@ -15,16 +15,18 @@ public class Book {
     private String description;
     private double price;
     private String image_url;
+    private String author;
 
     public Book() {
     }
 
-    public Book(int book_id, String title, String description, double price, String image_url) {
+    public Book(int book_id, String title, String description, double price, String image_url, String author) {
         this.book_id = book_id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.image_url = image_url;
+        this.author = author;
     }
 
     public void setBook_id(int book_id) {
@@ -66,6 +68,15 @@ public class Book {
     public String getTitle() {
         return title;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    
     
       @Override
        public boolean equals(Object obj) {
@@ -91,7 +102,8 @@ public class Book {
     
     @Override
     public String toString() {
-        return "Book ID: " + book_id + "\nBook Title: " + title + "\nDescription: " + description + "\nPrice: " + price;
+        return "Book ID: " + book_id + "\nBook Title: " + title + "\nDescription: " + description + "\nPrice: " + price + "\nAuthor: "
+                + author + "\n";
     }
     
     
