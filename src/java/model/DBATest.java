@@ -7,23 +7,47 @@ package model;
 public class DBATest {
     public static void main(String[] args) {
         
-        BookOrderDAO testDao = new BookOrderDAO();
+//        BookOrderDAO testDao = new BookOrderDAO();
+//        
+//        Book book1 = new Book();
+//        book1.setBook_id(16);
+//        book1.setTitle("Killer");
+//        book1.setPrice(14.99);
+//        book1.setDescription("Killer is a mesmerizing L.A. noir portrayal of the darkest impulses of human nature carried to shocking extremes.");
+//        book1.setImage_url("killer.jpg");
+//        book1.setAuthor("Kellerman, Jonathan");
+//        
+//        Book book2 = testDao.getBookList().get(1);
+//        book2.setPrice(18.99);
+//        
+//        testDao.deleteBook(testDao.getBookList().get(1));
+//        
+//        testDao.updateBook(book2);
+//        System.out.print(testDao.getBookList().toString());
         
-        Book book1 = new Book();
-        book1.setBook_id(16);
-        book1.setTitle("Killer");
-        book1.setPrice(14.99);
-        book1.setDescription("Killer is a mesmerizing L.A. noir portrayal of the darkest impulses of human nature carried to shocking extremes.");
-        book1.setImage_url("killer.jpg");
-        book1.setAuthor("Kellerman, Jonathan");
+//        CustomerDAO testDao2 = new CustomerDAO();
         
-        Book book2 = testDao.getBookList().get(1);
-        book2.setPrice(18.99);
+//        Customer customer1 = new Customer();
+//        customer1.setFirstName("Justin");
+//        customer1.setLastName("Trzebiatowski");
+//        customer1.setEmail("jtrzebiatowski2@my.wctc.edu");
+//        customer1.setStreet("2004 Oakdale Dr. #49");
+//        customer1.setCity("Waukesha");
+//        customer1.setState("WI");
+//        customer1.setZip("53189");
+//        customer1.setPhone("262-259-7845");
+//        customer1.setCreditCardNumber("4451236585961245");
+//        
+//        testDao2.addCustomer(customer1);
         
-        testDao.deleteBook(testDao.getBookList().get(1));
+//       Customer customer2;
+//       customer2 = testDao2.getCustomerList().get(0);
+//       customer2.setPhone("4142564785");
+//       
+//       testDao2.updateCustomer(customer2);
         
-        testDao.updateBook(book2);
-        System.out.print(testDao.getBookList().toString());
+        
+       
         
     }
 }
