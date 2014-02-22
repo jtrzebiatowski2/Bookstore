@@ -48,7 +48,7 @@ public class DBATest {
 //       
 //       testDao2.updateCustomer(customer2);
         
-        OrderDAO testDao3 = new OrderDAO();
+//        OrderDAO testDao3 = new OrderDAO();
         
 //        Order order1 = new Order();
 //        order1.setCustomer_id(1);
@@ -68,9 +68,11 @@ public class DBATest {
 //        
 //        testDao4.addOrderDetail(orderDetail1);
         
-        System.out.print(testDao3.getOrderByCustomerID(1).toString());
+//        System.out.print(testDao3.getOrderByCustomerID(1).toString());
         
-       
+//        BookOrderService bos = new BookOrderService();
+//        
+//        System.out.print(bos.getBooks().toString());
         
     }
 }

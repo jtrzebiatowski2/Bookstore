@@ -16,9 +16,10 @@ import model.BookOrderService;
  *
  * @author J-Tron
  */
-@WebServlet(name = "BookOrderServlet", urlPatterns = {"/order"})
-public class BookOrderController extends HttpServlet {
+@WebServlet(name = "BookDescriptionController", urlPatterns = {"/description"})
+public class BookDescriptionController extends HttpServlet {
 private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -46,18 +47,44 @@ private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         response.setContentType("text/html");
         
-        BookOrderService bookService = new BookOrderService();
+        BookOrderService bookOrderService = new BookOrderService();
         
-        List<Book> book_list = bookService.getBooks();
+        List<Book> books = bookOrderService.getBooks();
         
-        request.setAttribute("book_list", book_list);
+        int bookID = Integer.parseInt(request.getParameter("bookList"));
         
-         RequestDispatcher view =
+        String bookTitle = books.get(bookID).getTitle();
+        
+        request.setAttribute("bookTitle", bookTitle);
+        
+        String bookAuthor = books.get(bookID).getAuthor();
+        
+        request.setAttribute("bookAuthor", bookAuthor);
+        
+        String bookDescription = books.get(bookID).getDescription();
+        
+        request.setAttribute("bookDescription", bookDescription);
+        
+        double bookPrice = (Double)books.get(bookID).getPrice();
+        
+        request.setAttribute("bookPrice", bookPrice);
+        
+        int selectedBook = bookID;
+        
+        String selectedBookTitle = books.get(selectedBook).getTitle();
+        
+        request.setAttribute("selectedBook", selectedBook);
+        
+        request.setAttribute("selectedBookTitle", selectedBookTitle);
+        
+        
+        RequestDispatcher view =
                 request.getRequestDispatcher(BOOK_ORDER_PAGE);
         view.forward(request, response);
+        
+        
         
     }
 
