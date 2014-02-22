@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Calendar;
+
 /**
  *
  * @author J-Tron
@@ -45,6 +47,18 @@ public class DBATest {
 //       customer2.setPhone("4142564785");
 //       
 //       testDao2.updateCustomer(customer2);
+        
+//        OrderDAO testDao3 = new OrderDAO();
+        
+//        Order order1 = new Order();
+//        order1.setCustomer_id(1);
+//        order1.setOrderDate(Calendar.getInstance().getTime());
+//        order1.setTotal(140.45);
+//        order1.setTax(order1.calculateWITax(order1.getTotal()));
+//        order1.setGrandTotal(order1.calculateGrandTotal(order1.getTotal(), order1.getTax()));
+//        
+//        testDao3.addOrder(order1);
+        
         
         
        

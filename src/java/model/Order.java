@@ -32,7 +32,7 @@ public class Order {
     }
     
     public double calculateWITax(double total){
-        return total * 1.056;
+        return total * .056;
     }
     
     public double calculateGrandTotal(double total, double tax){

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,6 +54,41 @@ public class OrderDAO implements OrderDAOStrategy {
         }
         
         return orders;
+        
+    }
+    
+         @Override
+    public void addOrder(Order order){
+        try {
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            String tableName = ORDER_TABLE_NAME;
+            List<String> columnNames =
+                new ArrayList<String>();
+            columnNames.add("customer_id");
+            columnNames.add("order_date");
+            columnNames.add("total");
+            columnNames.add("tax");
+            columnNames.add("grand_total");
+            
+            List fieldValues =
+                new ArrayList();
+            fieldValues.add(order.getCustomer_id());
+            fieldValues.add(order.getOrderDate());
+            fieldValues.add(order.getTotal());
+            fieldValues.add(order.getTax());
+            fieldValues.add(order.getGrandTotal());
+            
+            databaseAccessor.insertRecord(tableName, columnNames, fieldValues, true);
+            
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }
