@@ -27,4 +27,6 @@ public interface DBAccessor {
     
     public abstract int deleteRecord(String tableName, String whereField, Object whereValue, boolean closeConnection)
 	throws SQLException, Exception;
+    
+    public abstract List findRecordsWithSQLString(String sqlStatement, boolean closeConnection) throws SQLException, Exception;
 }

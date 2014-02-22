@@ -19,6 +19,10 @@ public class OrderDAO implements OrderDAOStrategy {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "tiburon87";
     private static final String ORDER_TABLE_NAME = "book_order";
+    private static final String ORDER_BY_CUSTOMER_ID = "SELECT customer.last_name, customer.first_name, customer.customer_id,"
+            + "book_order.order_id, book_order.total, book_order.grand_total"
+            + "FROM book_order join customer on customer.customer_id = book_order.customer_id"
+            + "WHERE customer.customer_id = ";
     
     public OrderDAO(){
         databaseAccessor = new DB_MySql();
@@ -90,5 +94,40 @@ public class OrderDAO implements OrderDAOStrategy {
             Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+
+    @Override
+    public List<CustomerOrderDTO> getOrderByCustomerID(String customerID) {
+            List<Map> joinData = new ArrayList<Map>();
+            List<CustomerOrderDTO> values = new ArrayList<CustomerOrderDTO>();
+            
+        try{
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            joinData = databaseAccessor.findRecordsWithSQLString(ORDER_BY_CUSTOMER_ID + customerID, true);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        CustomerOrderDTO customerOrderDTO = null;
+        
+        for (Map m : joinData) {
+            customerOrderDTO = new CustomerOrderDTO();
+            String lastName = m.get("last_name").toString();
+            customerOrderDTO.setLastName(lastName);
+            String firstName = m.get("first_name").toString();
+            customerOrderDTO.setFirstName(firstName);
+            int customer_ID = (Integer)m.get("customer_id");
+            customerOrderDTO.setCustomerID(customer_ID);
+            int order_ID = (Integer)m.get("order_id");
+            customerOrderDTO.setOrderID(order_ID);
+            double orderTotal = (Double)m.get("total");
+            customerOrderDTO.setOrderTotal(orderTotal);
+            double grandTotal = (Double)m.get("grand_total");
+            customerOrderDTO.setOrderTotal(grandTotal);
+            values.add(customerOrderDTO);
+        }
+
+        return values;
     }
 }

@@ -278,6 +278,49 @@ public class DB_MySql implements DBAccessor{
 
 		return recordsDeleted;
         }
+
+    @Override
+    public List findRecordsWithSQLString(String sqlStatement, boolean closeConnection)throws SQLException, Exception {
+        Statement statement = null;
+        ResultSet results = null;
+        ResultSetMetaData metaData = null;
+	final List listOfValues = new ArrayList();
+	Map foundRecord = null;
+        
+        try{
+            statement = connection.createStatement();
+            results = statement.executeQuery(sqlStatement);
+            metaData = results.getMetaData();
+            int fields = metaData.getColumnCount();
+            
+            while(results.next()){
+                foundRecord = new HashMap();
+                for(int i=0; i<=fields; i++){
+                    try{
+                        foundRecord.put(metaData.getColumnName(i), results.getObject(i));
+                    }catch(NullPointerException np){
+                        //Some fields may be null so nothing will be done here
+                    }
+                }
+                listOfValues.add(foundRecord);
+            }
+        } catch (SQLException sqle) {
+			throw sqle;
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {
+				statement.close();
+				if(closeConnection) connection.close();
+			} catch(SQLException e) {
+				throw e;
+			} 
+		} 
+
+		return listOfValues; 
+	}
+        
+    
         
  }
     
