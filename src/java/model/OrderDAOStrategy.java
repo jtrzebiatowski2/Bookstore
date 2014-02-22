@@ -9,6 +9,6 @@ import java.util.List;
 public interface OrderDAOStrategy {
     public abstract List<Order> getOrders();
     public abstract void addOrder(Order order);
-    public abstract List<CustomerOrderDTO> getOrderByCustomerID(String customerID);
+    public abstract List<CustomerOrderDTO> getOrderByCustomerID(int customerID);
     
 }

@@ -74,8 +74,8 @@ public class CustomerOrderDTO implements CustomerOrderDTOStrategy {
 
     @Override
     public String toString() {
-        //Insert code for toString menthod()
-        return super.toString();
+        return "Customer ID: " + customerID + "\n First Name: " + firstName + "\n Last Name: " + lastName 
+                + "\n Order ID: " + orderID + "\n Order Total: " + orderTotal + "\n Total With Tax: " + orderGrandTotal;
     }
     
     

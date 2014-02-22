@@ -20,8 +20,8 @@ public class OrderDAO implements OrderDAOStrategy {
     private static final String PASSWORD = "tiburon87";
     private static final String ORDER_TABLE_NAME = "book_order";
     private static final String ORDER_BY_CUSTOMER_ID = "SELECT customer.last_name, customer.first_name, customer.customer_id,"
-            + "book_order.order_id, book_order.total, book_order.grand_total"
-            + "FROM book_order join customer on customer.customer_id = book_order.customer_id"
+            + "book_order.order_id, book_order.total, book_order.grand_total "
+            + "FROM book_order join customer on customer.customer_id = book_order.customer_id "
             + "WHERE customer.customer_id = ";
     
     public OrderDAO(){
@@ -97,13 +97,13 @@ public class OrderDAO implements OrderDAOStrategy {
     }
 
     @Override
-    public List<CustomerOrderDTO> getOrderByCustomerID(String customerID) {
+    public List<CustomerOrderDTO> getOrderByCustomerID(int customerID) {
             List<Map> joinData = new ArrayList<Map>();
             List<CustomerOrderDTO> values = new ArrayList<CustomerOrderDTO>();
             
         try{
             databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
-            joinData = databaseAccessor.findRecordsWithSQLString(ORDER_BY_CUSTOMER_ID + customerID, true);
+            joinData = databaseAccessor.findRecordsWithSQLString(ORDER_BY_CUSTOMER_ID + String.valueOf(customerID), true);
             
         } catch (Exception ex) {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,7 +124,7 @@ public class OrderDAO implements OrderDAOStrategy {
             double orderTotal = (Double)m.get("total");
             customerOrderDTO.setOrderTotal(orderTotal);
             double grandTotal = (Double)m.get("grand_total");
-            customerOrderDTO.setOrderTotal(grandTotal);
+            customerOrderDTO.setOrderGrandTotal(grandTotal);
             values.add(customerOrderDTO);
         }
 

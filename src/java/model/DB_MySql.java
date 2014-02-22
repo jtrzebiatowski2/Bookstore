@@ -295,7 +295,7 @@ public class DB_MySql implements DBAccessor{
             
             while(results.next()){
                 foundRecord = new HashMap();
-                for(int i=0; i<=fields; i++){
+                for(int i=1; i<=fields; i++){
                     try{
                         foundRecord.put(metaData.getColumnName(i), results.getObject(i));
                     }catch(NullPointerException np){
