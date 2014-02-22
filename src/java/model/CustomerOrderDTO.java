@@ -4,7 +4,7 @@ package model;
  *
  * @author J-Tron
  */
-public class CustomerOrderDTO implements CustomerOrderDTOStrategy {
+public class CustomerOrderDTO{
     private String lastName;
     private String firstName;
     private int customerID;
