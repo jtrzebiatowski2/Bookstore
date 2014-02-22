@@ -4,6 +4,6 @@ package model;
  *
  * @author J-Tron
  */
-public interface CustomerOrderDetailsDTOStrategy {
+public interface CustomerOrderDTOStrategy {
     
 }

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,6 +52,39 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
         }
         
         return orderDetails;
+        
+    }
+    
+    @Override
+    public void addOrderDetail(OrderDetail orderDetail){
+        try {
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            String tableName = ORDER_DETAIL_TABLE_NAME;
+            List<String> columnNames =
+                new ArrayList<String>();
+            columnNames.add("order_id");
+            columnNames.add("book_id");
+            columnNames.add("quantity");
+            columnNames.add("total");
+            
+            List fieldValues =
+                new ArrayList();
+            fieldValues.add(orderDetail.getOrder_id());
+            fieldValues.add(orderDetail.getBook_id());
+            fieldValues.add(orderDetail.getQuantity());
+            fieldValues.add(orderDetail.getLineTotal());
+            
+            databaseAccessor.insertRecord(tableName, columnNames, fieldValues, true);
+            
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

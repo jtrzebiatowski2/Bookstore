@@ -8,4 +8,6 @@ import java.util.List;
  */
 public interface OrderDetailsDAOStrategy {
     public abstract List<OrderDetail> getOrderDetails();
+    public abstract void addOrderDetail(OrderDetail orderDetail);
+    
 }

@@ -25,6 +25,10 @@ public class OrderDetail {
         this.lineTotal = lineTotal;
     }
 
+    public double calculateLineItemTotal(double quantity, double bookPrice){
+        return quantity * bookPrice;
+    }
+    
     public int getBook_id() {
         return book_id;
     }

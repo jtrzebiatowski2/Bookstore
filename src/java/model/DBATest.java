@@ -59,6 +59,15 @@ public class DBATest {
 //        
 //        testDao3.addOrder(order1);
         
+//        OrderDetailsDAO testDao4 = new OrderDetailsDAO();
+//        OrderDetail orderDetail1 = new OrderDetail();
+//        orderDetail1.setOrder_id(1);
+//        orderDetail1.setBook_id(6);
+//        orderDetail1.setQuantity(8);
+//        orderDetail1.setLineTotal(orderDetail1.calculateLineItemTotal(orderDetail1.getQuantity(), 25.00));
+//        
+//        testDao4.addOrderDetail(orderDetail1);
+        
         
         
        
