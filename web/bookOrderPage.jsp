@@ -15,9 +15,9 @@
         <title>Order Books</title>
          <link rel='stylesheet' type='text/css' href='bookstoreHome.css'>
     </head>
-    <body>
+    <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs">
+        <div class="infoDivs" style="background-color: #ffff66; height: 200px; width:600px;">
             
             <form method="POST" action="description" class='center'>
                 <h2 class='rockwell'>Book List</h2>
@@ -31,19 +31,8 @@
                     
                     %>
                 </select>
-                        <input id="descriptionSubmit" name="descriptionSubmit" type="submit" value="Get Description">
-                        <br>
-                            <p>
-                                <strong>Book Title:</strong><br>${bookTitle}<br><strong>Author:</strong><br>${bookAuthor} <br> <strong>Synopsis:</strong><br>${bookDescription}<br>
-                                <strong>Price:</strong><br>${bookPrice}
-                            </p>
-                            
-                                <select name='selectItem'>
-                                        ${"<option value='"}${selectedBook}${"'>"}${selectedBookTitle}${"</option>"}                   
-                                </select>
-                                <form method="POST" action="">
-                                <input id="addBook" name="addBook" type="submit" value="Add to Order">
-                                </form>
+                <br><br>
+                <input class="button" id="descriptionSubmit" name="descriptionSubmit" type="submit" value="Get Description">
             </form>                         
         </div>
         <h1></h1>

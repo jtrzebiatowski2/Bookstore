@@ -18,7 +18,7 @@ import model.BookOrderService;
  */
 @WebServlet(name = "BookDescriptionController", urlPatterns = {"/description"})
 public class BookDescriptionController extends HttpServlet {
-private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
+private static final String BOOK_DESCRIPTION_PAGE = "/bookDescriptionPage.jsp";
    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,7 +53,9 @@ private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
         
         List<Book> books = bookOrderService.getBooks();
         
-        int bookID = Integer.parseInt(request.getParameter("bookList"));
+        request.setAttribute("book_list", books);
+        
+        int bookID = Integer.parseInt(request.getParameter("bookList")) - 2;
         
         String bookTitle = books.get(bookID).getTitle();
         
@@ -71,6 +73,10 @@ private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
         
         request.setAttribute("bookPrice", bookPrice);
         
+        String imageURL = books.get(bookID).getImage_url();
+        
+        request.setAttribute("imageURL", imageURL);
+        
         int selectedBook = bookID;
         
         String selectedBookTitle = books.get(selectedBook).getTitle();
@@ -81,7 +87,7 @@ private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
         
         
         RequestDispatcher view =
-                request.getRequestDispatcher(BOOK_ORDER_PAGE);
+                request.getRequestDispatcher(BOOK_DESCRIPTION_PAGE);
         view.forward(request, response);
         
         
