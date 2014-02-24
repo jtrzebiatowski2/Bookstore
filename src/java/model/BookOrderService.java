@@ -40,7 +40,7 @@ public class BookOrderService {
     }
     
     public void addCustomer(Customer customer){
-        customerDAOStrategy.addCustomer(customer);
+    customerDAOStrategy.addCustomer(customer);
     }
     
     public void updateCustomer(Customer customer){

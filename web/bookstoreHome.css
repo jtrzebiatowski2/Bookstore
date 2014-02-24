@@ -61,3 +61,26 @@ body{
                 color:#996633;
             }
             
+            #addCustomer fieldset {
+             padding:1em 1.5em;
+             border:1px solid #bbb;
+            }
+
+             #addCustomer legend {
+             font-weight:bold;
+            }
+
+            #addCustomer label {
+             display:block;
+            }
+
+            #addCustomer label span {
+             color:#f00;
+            }
+            
+            #addCustomer .error {
+             padding:5px;
+             margin:5px 0;
+             border:1px solid #f00;
+            }
+            

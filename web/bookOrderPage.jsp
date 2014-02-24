@@ -17,7 +17,7 @@
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="background-color: #ffff66; height: 200px; width:600px;">
+        <div class="infoDivs" style="background-color: #ffff66; height: 350px; width:600px; text-align: center;">
             
             <form method="POST" action="description" class='center'>
                 <h2 class='rockwell'>Book List</h2>
@@ -33,7 +33,10 @@
                 </select>
                 <br><br>
                 <input class="button" id="descriptionSubmit" name="descriptionSubmit" type="submit" value="Get Description">
-            </form>                         
+                
+            </form>      
+                <br>
+                <a href="index.html"><button class="button">Home Page</button></a>
         </div>
         <h1></h1>
     </body>
