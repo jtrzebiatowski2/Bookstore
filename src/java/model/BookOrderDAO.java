@@ -20,6 +20,8 @@ public class BookOrderDAO implements BookDAOStrategy{
     private static final String USERNAME = "root";
     private static final String PASSWORD = "tiburon87";
     private static final String BOOK_TABLE_NAME = "book";
+    private static final String BOOK_BY_ID = "SELECT book_id,title, price, description, image, author"
+            + " FROM book WHERE book_id = ";
     
     public BookOrderDAO(){
         databaseAccessor = new DB_MySql();
@@ -148,4 +150,39 @@ public class BookOrderDAO implements BookDAOStrategy{
         }
     }
 
+        
+
+    @Override
+    public List<Book> getBookByID(int bookID) {
+        List<Map> data = new ArrayList<Map>();
+        List<Book> values = new ArrayList<Book>();
+        
+        try{
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            data = databaseAccessor.findRecordsWithSQLString(BOOK_BY_ID + String.valueOf(bookID), true);
+            
+        }catch (Exception ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Book book = null;
+        
+         for(Map m : data){
+             book = new Book();
+             book.setBook_id(bookID);
+             String title = m.get("title").toString();
+             book.setTitle(title);
+             Double price = (Double)m.get("price");
+             book.setPrice(price);
+             String description = m.get("description").toString();
+             book.setDescription(description);
+             String image = m.get("image").toString();
+             book.setImage_url(image);
+             String author = m.get("author").toString();
+             book.setAuthor(author);
+             values.add(book);
+             
+         }
+        return values;
+    }
+    
 }

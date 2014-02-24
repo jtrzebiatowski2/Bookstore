@@ -27,7 +27,8 @@
                     <strong>Price:</strong><br>$${bookPrice}<br>
                      <img src="Images/${imageURL}" style="border-style: groove; border-color:saddlebrown; border-width: 6px;">
                  </p>
-                 <form method="POST" action="">
+                 <form method="POST" action="addBook">
+                     Quantity to add:<input id="bookQuantity" name="bookQuantity" type="text" placeholder="QTY" size="1"><br>
                      <input class="button" id="addBook" name="addBook" type="submit" value="Add to Order">
                  </form>
                  <br>
@@ -35,5 +36,9 @@
                      <input class="button" id="backToBooks" name="backToBooks" type="submit" value="Back to Books">
                  </form>
         </div>
+                        <%
+                         int bookID = (Integer)(request.getAttribute("selectedBook"));
+                         session.setAttribute("session_book_id", bookID);
+                         %>
     </body>
 </html>

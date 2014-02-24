@@ -17,7 +17,7 @@ import model.BookOrderService;
  * @author J-Tron
  */
 @WebServlet(name = "BookOrderServlet", urlPatterns = {"/order"})
-public class BookOrderController extends HttpServlet {
+public class BookListController extends HttpServlet {
 private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

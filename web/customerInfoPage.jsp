@@ -4,6 +4,10 @@
     Author     : J-Tron
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="model.Customer"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.BookOrderService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,14 +23,14 @@
                 <fieldset>
                     <legend><span class="rockwell">Enter your Information Below</span></legend>
                 <div style="text-align: center;">
-                First Name: <input id="firstName" type="text" name="firstName" autofocus placeholder="Enter First Name" class="required"><br>
-                Last Name: <input id="lastName" type="text" name="lastName" placeholder="Enter Last Name" class="required"><br>
-                Email Address: <input id="email" type="text" name="email" placeholder="Enter E-Mail" class="email"><br>
-                Phone Number: <input id="phone" type="text" name="phone" placeholder="Enter Phone Number" class="required digits"><br>
-                Street: <input id="street" type="text" name="street" placeholder="Enter Street" class="required"><br>
-                City: <input id="city" type="text" name="city" placeholder="Enter City" class="required"><br>
+                First Name: <input id="firstName" type="text" name="firstName" autofocus placeholder="Enter First Name" size="25"><br>
+                Last Name: <input id="lastName" type="text" name="lastName" placeholder="Enter Last Name" size="25"><br>
+                Email Address: <input id="email" type="text" name="email" placeholder="Enter E-Mail" size="50"><br>
+                Phone Number: <input id="phone" type="text" name="phone" placeholder="Enter Phone Number" size="20"><br>
+                Street: <input id="street" type="text" name="street" placeholder="Enter Street" size="50" ><br>
+                City: <input id="city" type="text" name="city" placeholder="Enter City" size="25" ><br>
                 
-                State:<select name="state" id="state" class="required">
+                State:<select name="state" id="state">
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
                     <option value="AZ">AZ</option>
@@ -80,13 +84,24 @@
                     <option value="WY">WY</option>
                 </select><br>
                 
-                Zip: <input id="zip" type="text" name="zip" placeholder="Enter Zip" class="required digits"><br>
-                Credit Card Number: <input id="creditCardNumber" type="text" name="creditCardNumber" placeholder="Enter Credit Card Number" class="creditcard"><br>
+                Zip: <input id="zip" type="text" name="zip" placeholder="Enter Zip" size="10"><br>
+                Credit Card Number: <input id="creditCardNumber" type="text" name="creditCardNumber" placeholder="Enter Credit Card Number" size="16"><br>
                 </div>
                 </fieldset>
                 <input class="button" id="submit" name="submit" type="submit" value="Submit">
             </form>
-        
+            <%
+            BookOrderService bos = new BookOrderService();
+            List<Customer> customers = new ArrayList<Customer>();
+            customers = bos.getCustomers();
+            Customer thisCustomer = customers.get((customers.size() - 1));
+            int custID = thisCustomer.getCustomer_id();
+            session.setAttribute("session_customer_id", custID);
+            String firstName = request.getParameter("firstName");
+            session.setAttribute("session_customer_firstName", firstName);
+            String lastName = request.getParameter("lastName");
+            session.setAttribute("session_customer_lastName", lastName);
+            %>
         </div>
     </body>
 </html>

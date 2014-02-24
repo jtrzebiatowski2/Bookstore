@@ -13,4 +13,5 @@ public interface BookDAOStrategy {
     public abstract void addBook(Book book);
     public abstract void updateBook(Book book);
     public abstract void deleteBook(Book book);
+    public abstract List<Book> getBookByID(int bookID);
 }

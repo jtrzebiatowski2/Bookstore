@@ -71,6 +71,10 @@ public class BookOrderService {
         orderDetailsStrategy.addOrderDetail(orderDetail);
     }
     
+    public List<Book> getBookByID(int bookID){
+        return bookDAOStrategy.getBookByID(bookID);
+    }
+    
     
     
 }
