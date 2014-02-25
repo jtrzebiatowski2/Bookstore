@@ -71,15 +71,10 @@ public class BookOrderService {
         orderDetailsStrategy.addOrderDetail(orderDetail);
     }
     
-    public Book getBookByID(int bookID){
+    public List<Book> getBookByID(int bookID){
         return bookDAOStrategy.getBookByID(bookID);
     }
     
-    public void updateOrder(Order order){
-        orderDAOStrategy.updateOrder(order);
-    }
-    public double getOrderTotal(int order_id){
-        return orderDetailsStrategy.getOrderTotal(order_id);
-    }
+    
     
 }

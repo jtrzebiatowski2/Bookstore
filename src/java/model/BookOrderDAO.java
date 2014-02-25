@@ -153,9 +153,9 @@ public class BookOrderDAO implements BookDAOStrategy{
         
 
     @Override
-    public Book getBookByID(int bookID) {
+    public List<Book> getBookByID(int bookID) {
         List<Map> data = new ArrayList<Map>();
-        Book book = new Book();
+        List<Book> values = new ArrayList<Book>();
         
         try{
             databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
@@ -164,6 +164,7 @@ public class BookOrderDAO implements BookDAOStrategy{
         }catch (Exception ex) {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Book book = null;
         
          for(Map m : data){
              book = new Book();
@@ -178,9 +179,10 @@ public class BookOrderDAO implements BookDAOStrategy{
              book.setImage_url(image);
              String author = m.get("author").toString();
              book.setAuthor(author);
+             values.add(book);
              
          }
-        return book;
+        return values;
     }
     
 }
