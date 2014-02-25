@@ -85,7 +85,6 @@ private static final String BOOK_DESCRIPTION_PAGE = "/bookDescriptionPage.jsp";
         
         request.setAttribute("selectedBookTitle", selectedBookTitle);
         
-        
         RequestDispatcher view =
                 request.getRequestDispatcher(BOOK_DESCRIPTION_PAGE);
         view.forward(request, response);

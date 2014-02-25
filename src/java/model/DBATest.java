@@ -70,11 +70,13 @@ public class DBATest {
         
 //        System.out.print(testDao3.getOrderByCustomerID(1).toString());
         
-//       BookOrderService bos = new BookOrderService();
+//        BookOrderService bos = new BookOrderService();
 //        
-//       System.out.print(bos.getBooks().toString());
+//        System.out.print(bos.getBooks().toString());
         
-//       System.out.print((bos.getBookByID(17)).toString());
+//        System.out.print((bos.getBookByID(17)).toString());
+       
+//        System.out.print((bos.getOrderTotal(14)));
         
     }
 }

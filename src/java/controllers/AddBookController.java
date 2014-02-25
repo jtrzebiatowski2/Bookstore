@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Book;
 import model.BookOrderService;
+import model.CustomerOrderDTO;
 import model.Order;
 import model.OrderDetail;
 
@@ -62,23 +64,32 @@ public class AddBookController extends HttpServlet {
         
         Integer bookID = (Integer)(httpSession.getAttribute("session_book_id")) + 2;
         
-        Order order = new Order();
+        Book orderedBook = (Book)bos.getBookByID(bookID);
         
-        order.setOrderDate(Calendar.getInstance().getTime());
-        
-        order.setCustomer_id(custID);
-        
-        order.setTotal(0.0);
-        
-        order.setTax(0.0);
-        
-        order.setGrandTotal(0.0);
-        
-        bos.addOrder(order);
+        int bookQuantity = (Integer.valueOf(request.getParameter("bookQuantity")));
         
         OrderDetail orderDetail = new OrderDetail();
-
+        int orderID = (bos.getOrderByCustomerID(custID).get(0).getOrderID());
+        orderDetail.setOrder_id(orderID);
+        orderDetail.setBook_id(bookID);
+        orderDetail.setQuantity(bookQuantity);
+        double lineTotal = orderDetail.calculateLineItemTotal(bookQuantity, orderedBook.getPrice());
+        orderDetail.setLineTotal(lineTotal);
+        bos.addOrderDetail(orderDetail);
         
+       
+        List<Order> orderList = bos.getOrders();
+        
+        Order orderToUpdate = orderList.get(orderList.size() - 1);
+        
+        orderToUpdate.setTotal(bos.getOrderTotal(orderToUpdate.getOrder_id()));
+        double updatedTotal = orderToUpdate.getTotal();
+        orderToUpdate.setTax(orderToUpdate.calculateWITax(bos.getOrderTotal(orderToUpdate.getOrder_id())));
+        double updatedTax = orderToUpdate.getTax();
+        orderToUpdate.setGrandTotal(orderToUpdate.calculateGrandTotal(updatedTotal, updatedTax));
+        
+        bos.updateOrder(orderToUpdate);
+              
         RequestDispatcher view =
                 request.getRequestDispatcher(ITEM_ADDED_PAGE);
         view.forward(request, response);

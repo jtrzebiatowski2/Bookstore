@@ -130,4 +130,42 @@ public class OrderDAO implements OrderDAOStrategy {
 
         return values;
     }
+
+    @Override
+    public void updateOrder(Order order) {
+        try {
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            String tableName = ORDER_TABLE_NAME;
+            List<String> columnNames =
+                new ArrayList<String>();
+            columnNames.add("order_id");
+            columnNames.add("customer_id");
+            columnNames.add("order_date");
+            columnNames.add("total");
+            columnNames.add("tax");
+            columnNames.add("grand_total");
+
+            List fieldValues =
+                new ArrayList();
+            fieldValues.add(order.getOrder_id());
+            fieldValues.add(order.getCustomer_id());
+            fieldValues.add(order.getOrderDate());
+            fieldValues.add(order.getTotal());
+            fieldValues.add(order.getTax());
+            fieldValues.add(order.getGrandTotal());
+            
+            databaseAccessor.updateRecord(tableName, columnNames, fieldValues, "order_id", order.getOrder_id(), true);
+            
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
 }
