@@ -2,22 +2,28 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.BookOrderService;
 import model.Customer;
+import model.Order;
 
 /**
  *
  * @author J-Tron
  */
 @WebServlet(name = "addCustomerController", urlPatterns = {"/addCustomer"})
-public class addCustomerController extends HttpServlet {
+public class AddNewCustomerController extends HttpServlet {
     private static final String NEW_CUSTOMER_WELCOME_PAGE = "customerWelcomePage.jsp";
+    private HttpSession httpSession;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -46,6 +52,7 @@ public class addCustomerController extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html");
+        httpSession = request.getSession(true);
         
         Customer newCustomer = new Customer();
         
@@ -79,6 +86,38 @@ public class addCustomerController extends HttpServlet {
         newCustomer.setCreditCardNumber(creditCardNumber);
         
         orderService.addCustomer(newCustomer);
+        
+        List<Customer> customers = orderService.getCustomers();
+        Customer thisCustomer = customers.get((customers.size() - 1));
+        int custID = thisCustomer.getCustomer_id();
+        httpSession.setAttribute("session_customer_id", custID);
+        String custFirstName = thisCustomer.getFirstName();
+        httpSession.setAttribute("session_customer_first_name", custFirstName);
+        String custLastName = thisCustomer.getLastName();
+        httpSession.setAttribute("session_customer_last_name", custLastName);
+        String custEmail = thisCustomer.getEmail();
+        httpSession.setAttribute("session_customer_email", custEmail);
+        String custPhone = thisCustomer.getPhone();
+        httpSession.setAttribute("session_customer_phone", custPhone);
+        String custStreet = thisCustomer.getStreet();
+        httpSession.setAttribute("session_customer_street", custStreet);
+        String custCity = thisCustomer.getCity();
+        httpSession.setAttribute("session_customer_city", custCity);
+        String custState = thisCustomer.getState();
+        httpSession.setAttribute("session_customer_state", custState);
+        String custZip = thisCustomer.getZip();
+        httpSession.setAttribute("session_customer_zip", custZip);
+        String custCreditCardNumber = thisCustomer.getCreditCardNumber();
+        httpSession.setAttribute("session_customer_credit_card_number", custCreditCardNumber);
+         
+        Order initialOrder = new Order();
+        initialOrder.setCustomer_id(custID);
+        initialOrder.setOrderDate(Calendar.getInstance().getTime());
+        initialOrder.setTotal(0.0);
+        initialOrder.setGrandTotal(0.0);
+        initialOrder.setTax(0.0);
+        
+        orderService.addOrder(initialOrder);
         
           RequestDispatcher view =
             request.getRequestDispatcher(NEW_CUSTOMER_WELCOME_PAGE);
