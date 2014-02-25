@@ -90,18 +90,6 @@
                 </fieldset>
                 <input class="button" id="submit" name="submit" type="submit" value="Submit">
             </form>
-            <%
-            BookOrderService bos = new BookOrderService();
-            List<Customer> customers = new ArrayList<Customer>();
-            customers = bos.getCustomers();
-            Customer thisCustomer = customers.get((customers.size() - 1));
-            int custID = thisCustomer.getCustomer_id();
-            session.setAttribute("session_customer_id", custID);
-            String firstName = request.getParameter("firstName");
-            session.setAttribute("session_customer_firstName", firstName);
-            String lastName = request.getParameter("lastName");
-            session.setAttribute("session_customer_lastName", lastName);
-            %>
         </div>
     </body>
 </html>

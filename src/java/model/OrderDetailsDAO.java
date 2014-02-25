@@ -18,6 +18,7 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
     private static final String USERNAME = "root";
     private static final String PASSWORD = "tiburon87";
     private static final String ORDER_DETAIL_TABLE_NAME = "order_details";
+    private static final String SUM_OF_ORDER_FROM_ORDER_DETAILS = "SELECT sum(total) FROM order_details WHERE order_id = ";
     
     public OrderDetailsDAO(){
         databaseAccessor = new DB_MySql();
@@ -88,4 +89,28 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
         
     }
 
+    @Override
+    public double getOrderTotal(int order_id) {
+        double total = 0;
+      try {
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            List<Map> orderDetails_list = databaseAccessor.findRecordsWithSQLString(SUM_OF_ORDER_FROM_ORDER_DETAILS + String.valueOf(order_id), true);
+            
+            for(int i = 0; i < orderDetails_list.size(); i++){
+                total = (Double)orderDetails_list.get(0).get("sum(total)");
+            }
+            
+    }catch (IllegalArgumentException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+      return total;
+    }
+        
 }
