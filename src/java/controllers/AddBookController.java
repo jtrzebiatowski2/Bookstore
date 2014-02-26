@@ -70,6 +70,9 @@ public class AddBookController extends HttpServlet {
         
         OrderDetail orderDetail = new OrderDetail();
         int orderID = (bos.getOrderByCustomerID(custID).get(0).getOrderID());
+        
+        httpSession.setAttribute("session_order_id", orderID);
+        
         orderDetail.setOrder_id(orderID);
         orderDetail.setBook_id(bookID);
         orderDetail.setQuantity(bookQuantity);
@@ -77,7 +80,6 @@ public class AddBookController extends HttpServlet {
         orderDetail.setLineTotal(lineTotal);
         bos.addOrderDetail(orderDetail);
         
-       
         List<Order> orderList = bos.getOrders();
         
         Order orderToUpdate = orderList.get(orderList.size() - 1);

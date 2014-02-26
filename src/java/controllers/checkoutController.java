@@ -2,11 +2,16 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.BookOrderService;
+import model.OrderDetail;
 
 /**
  *
@@ -14,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "checkoutController", urlPatterns = {"/checkout"})
 public class checkoutController extends HttpServlet {
+    private static final String CUSTOMER_CHECKOUT_PAGE = "customerCheckout.jsp";
+    private HttpSession session;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -41,8 +48,21 @@ public class checkoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html");
         
+        session = request.getSession(true);
+        
+        BookOrderService bos = new BookOrderService();
+        
+        List<OrderDetail> orderDetails = bos.getOrderDetailsByOrderID(
+                Integer.valueOf(session.getAttribute("session_order_id").toString()));
+        
+        request.setAttribute("customerOrderDetails", orderDetails);
+        
+         RequestDispatcher view =
+            request.getRequestDispatcher(CUSTOMER_CHECKOUT_PAGE);
+        view.forward(request, response);
         
     }
 

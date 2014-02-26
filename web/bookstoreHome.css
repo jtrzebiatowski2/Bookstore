@@ -11,8 +11,6 @@ body{
     text-align: center;
 }
 .inline{
-    margin-left:auto;
-    margin-right:auto;
     display: inline-block;
     text-align: center;
     background-color: #ffff66;
