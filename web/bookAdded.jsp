@@ -16,7 +16,7 @@
         <div class='center'>
             <img src='Images/bookstoreBanner.png' alt='titleBanner'>
         </div>
-        <div class="infoDivs" style="text-align: center; width: 500px; height: 500px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 500px; height: 600px; background-color: #ffff66; padding-top:25px;">
             <h1>Book has been added!</h1><br>
             <img src='Images/checkmark.png' alt='checkmark'>
             <br>

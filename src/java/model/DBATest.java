@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -77,6 +78,10 @@ public class DBATest {
 //        System.out.print((bos.getBookByID(17)).toString());
        
 //        System.out.print((bos.getOrderTotal(14)));
+        
+//       List<OrderDetail> orders = bos.getOrderDetailsByOrderID(24);
+        
+//       System.out.print(orders.toString());
         
     }
 }

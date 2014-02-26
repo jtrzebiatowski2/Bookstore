@@ -21,6 +21,9 @@
             <br><br>
             <form method="POST" action="order">
                <input class="button" id="backToBooks" name="backToBooks" type="submit" value="Back to Books">
+            </form><br>
+            <form method="POST" action="checkout">
+               <input class="button" id="checkout" name="checkout" type="submit" value="Checkout">
             </form>
         </div>
 </html>

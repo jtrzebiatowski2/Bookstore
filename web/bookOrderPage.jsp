@@ -18,11 +18,11 @@
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="background-color: #ffff66; height: 350px; width:600px; text-align: center;">
+        <div class="infoDivs" style="background-color: #ffff66; height: 400px; width:600px; text-align: center;">
             
-            <form method="POST" action="description" class='center'>
+            <form method="POST" action="description" class='center'><br>
+                <fieldset><legend style="text-align:left">Select Book & Click Description for Details</legend>
                 <h2 class='rockwell'>Book List</h2>
-                
                 <select name='bookList'>
                      <%
                     ArrayList<Book> books = (ArrayList<Book>)request.getAttribute("book_list");
@@ -34,10 +34,12 @@
                 </select>
                 <br><br>
                 <input class="button" id="descriptionSubmit" name="descriptionSubmit" type="submit" value="Get Description">
-                
-            </form>      
+                </fieldset>
+            </form>
+                <fieldset><legend style="text-align:left">Back to Homepage</legend>
                 <br>
                 <a href="index.html"><button class="button">Home Page</button></a>
+                </fieldset>
         </div>
         <h1></h1>
     </body>

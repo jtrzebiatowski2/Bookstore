@@ -20,23 +20,29 @@
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="text-align: center; width: 500px; height: 800px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 600px; height: 1000px; background-color: #ffff66; padding-top:25px;">
 
                 <select name='selectItem'>
                         ${"<option value='"}${selectedBook}${"'>"}${selectedBookTitle}${"</option>"}                   
-                </select>                    
+                </select>              
+                <fieldset><legend style="text-align:left">Book Details</legend>
                  <p>
                     <strong>Book Title:</strong><br>${bookTitle}<br><strong>Author:</strong><br>${bookAuthor} <br> <strong>Synopsis:</strong><br>${bookDescription}<br>
                     <strong>Price:</strong><br>$${bookPrice}<br>
                      <img src="Images/${imageURL}" style="border-style: groove; border-color:saddlebrown; border-width: 6px;">
                  </p>
+                </fieldset>
                  <form id="addBook" name="addBook" method="POST" action="addBook">
-                     Quantity to add:<input id="bookQuantity" name="bookQuantity" type="text" placeholder="QTY" size="1"><br>
+                     <fieldset><legend>Order Details</legend>
+                     <span style="font-size:large; font-weight: bold;">Quantity to add:<input id="bookQuantity" name="bookQuantity" type="text" value="1" placeholder="QTY" size="1"></span><br>
                      <input class="button" id="addBook" name="addBook" type="submit" value="Add to Order">
+                     </fieldset>
                  </form>
                  <br>
                   <form method="POST" action="order">
-                     <input class="button" id="backToBooks" name="backToBooks" type="submit" value="Back to Books">
+                      <fieldset><legend style="text-align:left">View more Books</legend>
+                     <input class="button" id="backToBooks" name="backToBooks" type="submit" value="Book List">
+                      </fieldset>
                  </form>
         </div>
                         <%

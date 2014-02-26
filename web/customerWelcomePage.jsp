@@ -17,7 +17,7 @@
         <div class='center'>
             <img src='Images/bookstoreBanner.png' alt='titleBanner'>
         </div>
-        <div class="infoDivs" style="text-align: center; width: 500px; height: 500px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 500px; height: 600px; background-color: #ffff66; padding-top:25px;">
             <h1>Thank you for becoming a new Customer!</h1><br>
             <img src='Images/welcome.png' alt='welcomeNewMember'>
                 <h2>You are now able to purchase books from our 

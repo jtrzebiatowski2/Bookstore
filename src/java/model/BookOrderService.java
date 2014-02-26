@@ -82,4 +82,8 @@ public class BookOrderService {
         return orderDetailsStrategy.getOrderTotal(order_id);
     }
     
+    public List<OrderDetail> getOrderDetailsByOrderID(int order_id){
+        return orderDetailsStrategy.getOrderDetails(order_id);
+    }
+    
 }

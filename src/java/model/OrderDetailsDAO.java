@@ -19,7 +19,7 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
     private static final String PASSWORD = "tiburon87";
     private static final String ORDER_DETAIL_TABLE_NAME = "order_details";
     private static final String SUM_OF_ORDER_FROM_ORDER_DETAILS = "SELECT sum(total) FROM order_details WHERE order_id = ";
-    
+    private static final String ORDER_DETAILS_BY_ORDERID = "SELECT * FROM order_details WHERE order_id = ";
     public OrderDetailsDAO(){
         databaseAccessor = new DB_MySql();
     }
@@ -94,13 +94,15 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
         double total = 0;
       try {
             databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
-            List<Map> orderDetails_list = databaseAccessor.findRecordsWithSQLString(SUM_OF_ORDER_FROM_ORDER_DETAILS + String.valueOf(order_id), true);
+            List<Map> orderDetails_list = 
+                    databaseAccessor.findRecordsWithSQLString(SUM_OF_ORDER_FROM_ORDER_DETAILS 
+                            + String.valueOf(order_id), true);
             
             for(int i = 0; i < orderDetails_list.size(); i++){
                 total = (Double)orderDetails_list.get(0).get("sum(total)");
             }
             
-    }catch (IllegalArgumentException ex) {
+        }catch (IllegalArgumentException ex) {
             Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,5 +114,38 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
         
       return total;
     }
+
+    @Override
+    public List<OrderDetail> getOrderDetails(int order_id) {
+        List<OrderDetail> orderDetails = new <OrderDetail>ArrayList();
+        try{
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            List<Map> orderDetails_list = 
+                    databaseAccessor.findRecordsWithSQLString(ORDER_DETAILS_BY_ORDERID + 
+                            String.valueOf(order_id), true);
+            for(Map m : orderDetails_list){
+                OrderDetail detail = new OrderDetail();
+                Integer orderID = (Integer)m.get("order_id");
+                detail.setOrder_id(orderID);
+                Integer bookID = (Integer)m.get("book_id");
+                detail.setBook_id(bookID);
+                Integer quantity = (Integer)m.get("quantity");
+                detail.setQuantity(quantity);
+                double lineTotal = (Double)m.get("total");
+                detail.setLineTotal(lineTotal);
+                orderDetails.add(detail);
+            }
+             
+        }catch (IllegalArgumentException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         
+        }
+        return orderDetails;
+    }
 }
