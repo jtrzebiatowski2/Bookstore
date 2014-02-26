@@ -1,84 +1,84 @@
 //This is the stylesheet that will be used to define and style elements contained on the website's homepage
 
 body{
-                margin-left:auto;
-                margin-right:auto;
-                margin-top: auto;
-                margin-bottom:auto;
-                background-image: url('Images/bookstoreBackground.jpg');
-            }
-            .center{
-                text-align: center;
-            }
-            .inline{
-                margin-left:auto;
-                margin-right:auto;
-                display: inline-block;
-                text-align: center;
-                background-color: #ffff66;
-                
-            }
-            .infoDivs{
-                margin-top:auto;
-                margin-bottom: auto;
-                margin-left:auto;
-                margin-right:auto;
-                width:225px;
-                height:500px;
-                border-style: groove;
-                border-color: saddlebrown;
-                border-width:10px;
-            }
-            .rockwell {
-                font-family: Rockwell, Georgia, Serif;
-            }
-            
-            .bookImage{
-                padding-left:45px;
-                padding-right:45px;
-                padding-top: 65px;
-                padding-bottom:65px;
-            }
-            
-            .button{
-                border-style:groove;
-                border-width: 3px;
-                border-color: #996633;
-                background-color: #996633;
-                color: #ffff66;
-                width:195px;
-                height:75px;
-                font-size: 22px;
-            }
-            
-            .button:hover{
-                cursor:pointer;
-                border-width:10px;
-                border-color:#996633;
-                background-color: #ffff66;
-                color:#996633;
-            }
-            
-            #addCustomer fieldset {
-             padding:1em 1.5em;
-             border:1px solid #bbb;
-            }
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: auto;
+    margin-bottom:auto;
+    background-image: url('Images/bookstoreBackground.jpg');
+    }
+.center{
+    text-align: center;
+}
+.inline{
+    margin-left:auto;
+    margin-right:auto;
+    display: inline-block;
+    text-align: center;
+    background-color: #ffff66;
 
-             #addCustomer legend {
-             font-weight:bold;
-            }
+}
+.infoDivs{
+    margin-top:auto;
+    margin-bottom: auto;
+    margin-left:auto;
+    margin-right:auto;
+    width:225px;
+    height:600px;
+    border-style: groove;
+    border-color: saddlebrown;
+    border-width:10px;
+}
+.rockwell {
+    font-family: Rockwell, Georgia, Serif;
+}
 
-            #addCustomer label {
-             display:block;
-            }
+.bookImage{
+    padding-left:45px;
+    padding-right:45px;
+    padding-top: 5px;
+    padding-bottom:65px;
+}
 
-            #addCustomer label span {
-             color:#f00;
-            }
-            
-            #addCustomer .error {
-             padding:5px;
-             margin:5px 0;
-             border:1px solid #f00;
-            }
-            
+.button{
+    border-style:groove;
+    border-width: 3px;
+    border-color: #996633;
+    background-color: #996633;
+    color: #ffff66;
+    width:195px;
+    height:75px;
+    font-size: 22px;
+}
+
+.button:hover{
+    cursor:pointer;
+    border-width:10px;
+    border-color:#996633;
+    background-color: #ffff66;
+    color:#996633;
+}
+
+#addCustomer fieldset {
+     padding:1em 1.5em;
+     border:1px solid #bbb;
+}
+
+ #addCustomer legend {
+    font-weight:bold;
+}
+
+#addCustomer label {
+    display:block;
+}
+
+#addCustomer label span {
+    color:#f00;
+}
+
+#addCustomer .error {
+     padding:5px;
+     margin:5px 0;
+     border:1px solid #f00;
+}
+

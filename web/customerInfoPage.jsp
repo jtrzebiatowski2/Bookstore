@@ -15,17 +15,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Information</title>
         <link rel='stylesheet' type='text/css' href='bookstoreHome.css'>
+        <link rel="icon" type="image/png" href="Images/book-favicon.png">
     </head>
         <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
         <div class="infoDivs" style="text-align: center; width: 500px; height: 500px; background-color: #ffff66; padding-top:25px;">
             <form id="addCustomer" name="addCustomer" method="POST" action="addCustomer" class="rockwell">
                 <fieldset>
-                    <legend><span class="rockwell">Enter your Information Below</span></legend>
-                <div style="text-align: center;">
+                    <legend><span class="rockwell"><h2>Enter your Information Below</h2></span></legend>
+                <div style="text-align: left;">
                 First Name: <input id="firstName" type="text" name="firstName" autofocus placeholder="Enter First Name" size="25"><br>
                 Last Name: <input id="lastName" type="text" name="lastName" placeholder="Enter Last Name" size="25"><br>
-                Email Address: <input id="email" type="text" name="email" placeholder="Enter E-Mail" size="50"><br>
+                Email Address: <input id="email" type="text" name="email" placeholder="Enter E-Mail" size="45"><br>
                 Phone Number: <input id="phone" type="text" name="phone" placeholder="Enter Phone Number" size="20"><br>
                 Street: <input id="street" type="text" name="street" placeholder="Enter Street" size="50" ><br>
                 City: <input id="city" type="text" name="city" placeholder="Enter City" size="25" ><br>
@@ -85,9 +86,9 @@
                 </select><br>
                 
                 Zip: <input id="zip" type="text" name="zip" placeholder="Enter Zip" size="10"><br>
-                Credit Card Number: <input id="creditCardNumber" type="text" name="creditCardNumber" placeholder="Enter Credit Card Number" size="16"><br>
+                Credit Card Number: <input id="creditCardNumber" type="text" name="creditCardNumber" placeholder="Enter Credit Card Number" size="20"><br>
                 </div>
-                </fieldset>
+                </fieldset><br>
                 <input class="button" id="submit" name="submit" type="submit" value="Submit">
             </form>
         </div>

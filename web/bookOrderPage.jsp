@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order Books</title>
          <link rel='stylesheet' type='text/css' href='bookstoreHome.css'>
+         <link rel="icon" type="image/png" href="Images/book-favicon.png">
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
