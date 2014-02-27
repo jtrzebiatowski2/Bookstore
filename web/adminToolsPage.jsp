@@ -12,7 +12,6 @@
         <script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
         <script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
         <script src="jquery.js" type='text/javascript'></script>
-        <script src="validate.js" type='text/javascript'></script>
         <script>
             $().ready(function() {
                 $("#addCustomer").validate();

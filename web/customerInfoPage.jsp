@@ -16,61 +16,14 @@
         <script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
         <script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
         <script src="jquery.js" type='text/javascript'></script>
-        <script src="validate.js" type='text/javascript'></script>
         <link rel='stylesheet' type='text/css' href='bookstoreHome.css'>
         <link rel="icon" type="image/png" href="Images/book-favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             
         <script>
             $().ready(function() {
-                $("#addCustomer").validate({
-		rules: {
-			firstName: "required",
-			lastName: "required",
-			email: {
-				required: true,
-				email: true
-			},
-			phone: {
-				required: true,
-				digits: true
-			},
-			street: "required",
-				
-			city: "required",
-                        
-			state: "required",
-                        
-                        zip: {
-                            required: true,
-                            digits: true
-                        },
-                        
-			creditCardNumber:{
-                                    required: true,
-                                    digits:true
-		},
-		messages: {
-			firstName: "Please enter your firstname",
-			lastName: "Please enter your lastname",
-			email: "Please enter a valid email address",
-                        phone:{
-                            required: "Plese enter a phone number",
-                            digits: "Invalid phone number"
-                        },
-                        street: "Please enter a street address",
-                        city: "Please enter a city",
-                        state: "Select a state",
-                        zip: {
-                            required: "Please enter a zip",
-                            digits: "Invalid zip"
-				
-			},
-			creditCardNumber: {
-				required: "Please provide a credit card number for billing",
-				digits: "Invalid card number"
-                        }
-	});      
+                $("#addCustomer").validate();
+            };
         </script>
         <title>Customer Information</title>
         
