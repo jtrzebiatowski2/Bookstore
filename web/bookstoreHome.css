@@ -48,13 +48,30 @@ body{
     height:75px;
     font-size: 22px;
 }
+.buttonCancel{
+    border-style:groove;
+    border-width: 3px;
+    border-color: #996633;
+    background-color: #996633;
+    color: #ffff66;
+    width:195px;
+    height:75px;
+    font-size: 22px;
+}
+.buttonCancel:hover{
+     cursor:pointer;
+    border-width:10px;
+    border-color:#996633;
+    background-color: red;
+    color:white;
+}
 
 .button:hover{
     cursor:pointer;
     border-width:10px;
     border-color:#996633;
-    background-color: #ffff66;
-    color:#996633;
+    background-color: green;
+    color:white;
 }
 
 #addCustomer fieldset {

@@ -3,6 +3,7 @@
     Created on : Feb 25, 2014, 7:20:49 PM
     Author     : J-Tron
 --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="model.BookOrderService"%>
 <%@page import="model.Book"%>
@@ -33,7 +34,11 @@
                 <%
                 BookOrderService bos = new BookOrderService();
                 ArrayList<OrderDetail> orderDetails = (ArrayList<OrderDetail>)request.getAttribute("customerOrderDetails");
+                DecimalFormat df = new DecimalFormat("0.00");
                 double orderTotal = bos.getOrderTotal((Integer)session.getAttribute("session_order_id"));
+                String taxes = df.format(orderTotal * .056);
+                double taxesDouble = (Double.parseDouble(taxes));
+                double grandTotal = orderTotal + taxesDouble;
                 for(OrderDetail od: orderDetails){
                     int bookID = od.getBook_id();
                     Book book = bos.getBookByID(bookID);
@@ -46,8 +51,12 @@
                     out.print("<td style='background-color: white; color:black; border-style: groove; border-color:#996633; border-width: 2px;'>" + "$" + lineTotal + "</td>");
                     out.print("</tr>");
                 }   
-                out.print("<tr style= 'text-align: right; margin-left:0;'>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 18px;'>" 
-                        + "OrderTotal: " + "<span style='text-decoration: underline; color:#FF0000; font-size: 24px;'> $" + orderTotal + "</span>" + "</td>" + "</tr>");
+                out.print("<tr style= 'text-align: right; margin-left:0;'>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 14px;'>" 
+                        + "OrderTotal: " + "<span style='color:#FF0000; font-size: 18px;'> $" + orderTotal + "</span>" + "</td>" + "</tr>");
+                out.print("<tr style= 'text-align: right; margin-left:0;'>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 14px;'>" 
+                        + "Applicable Taxes: " + "<span style='color:#FF0000; font-size: 18px;'> $" + taxes + "</span>" + "</td>" + "</tr>");
+                out.print("<tr style= 'text-align: right; margin-left:0;'>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 20px;'>" 
+                        + "Grand Total: " + "<span style='border: 3px solid red; color:#FF0000; font-size: 26px;'> $" + grandTotal + "</span>" + "</td>" + "</tr>");
             %>
                 
             </table>
@@ -58,7 +67,7 @@
                     <input class="button" type="submit" value="Checkout">
             </form> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <form method='POST' action="cancel">
-                    <input class="button" type="submit" value="Cancel Order">
+                    <input class="buttonCancel" type="submit" value="Cancel Order">
             </form>
             </fieldset>
             <br>    

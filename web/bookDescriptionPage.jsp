@@ -20,12 +20,13 @@
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="text-align: center; width: 600px; height: 1000px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 700px; height: 1000px; background-color: #ffff66; padding-top:25px;">
 
                 <select name='selectItem'>
                         ${"<option value='"}${selectedBook}${"'>"}${selectedBookTitle}${"</option>"}                   
                 </select>              
-                <fieldset><legend style="text-align:left">Book Details</legend>
+                <fieldset style= "border-style:groove; border-width: 8px; border-color: green; width:600px; margin:auto;">
+                    <legend style="text-align:left"><h3>Book Details</h3></legend>
                  <p>
                     <strong>Book Title:</strong><br>${bookTitle}<br><strong>Author:</strong><br>${bookAuthor} <br> <strong>Synopsis:</strong><br>${bookDescription}<br>
                     <strong>Price:</strong><br>$${bookPrice}<br>
@@ -33,14 +34,16 @@
                  </p>
                 </fieldset>
                  <form id="addBook" name="addBook" method="POST" action="addBook">
-                     <fieldset><legend>Order Details</legend>
+                     <fieldset  style="border-style:groove; border-width: 8px; border-color: green; width:600px; margin:auto;">
+                         <legend style="text-align:left;"><h3>Add Book(s) to Cart</h3></legend>
                      <span style="font-size:large; font-weight: bold;">Quantity to add:<input id="bookQuantity" name="bookQuantity" type="text" value="1" placeholder="QTY" size="1"></span><br>
-                     <input class="button" id="addBook" name="addBook" type="submit" value="Add to Order">
+                     <input class="button" id="addBook" name="addBook" type="submit" value="Add to Cart">
                      </fieldset>
                  </form>
                  <br>
                   <form method="POST" action="order">
-                      <fieldset><legend style="text-align:left">View more Books</legend>
+                      <fieldset style="border-style:groove; border-width: 8px; border-color: green; width:600px; margin:auto;">
+                          <legend style="text-align:left"><h3>View more Books</h3></legend>
                      <input class="button" id="backToBooks" name="backToBooks" type="submit" value="Book List">
                       </fieldset>
                  </form>

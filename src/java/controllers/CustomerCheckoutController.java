@@ -18,7 +18,7 @@ import model.OrderDetail;
  * @author J-Tron
  */
 @WebServlet(name = "checkoutController", urlPatterns = {"/checkout"})
-public class checkoutController extends HttpServlet {
+public class CustomerCheckoutController extends HttpServlet {
     private static final String CUSTOMER_CHECKOUT_PAGE = "customerCheckout.jsp";
     private HttpSession session;
 
@@ -60,9 +60,10 @@ public class checkoutController extends HttpServlet {
         
         request.setAttribute("customerOrderDetails", orderDetails);
         
-         RequestDispatcher view =
+        RequestDispatcher view =
             request.getRequestDispatcher(CUSTOMER_CHECKOUT_PAGE);
         view.forward(request, response);
+        
         
     }
 

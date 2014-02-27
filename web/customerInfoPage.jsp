@@ -12,26 +12,84 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer Information</title>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
+        <script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
+        <script src="jquery.js" type='text/javascript'></script>
+        <script src="validate.js" type='text/javascript'></script>
         <link rel='stylesheet' type='text/css' href='bookstoreHome.css'>
         <link rel="icon" type="image/png" href="Images/book-favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            
+        <script>
+            $().ready(function() {
+                $("#addCustomer").validate({
+		rules: {
+			firstName: "required",
+			lastName: "required",
+			email: {
+				required: true,
+				email: true
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			street: "required",
+				
+			city: "required",
+                        
+			state: "required",
+                        
+                        zip: {
+                            required: true,
+                            digits: true
+                        },
+                        
+			creditCardNumber:{
+                                    required: true,
+                                    digits:true
+		},
+		messages: {
+			firstName: "Please enter your firstname",
+			lastName: "Please enter your lastname",
+			email: "Please enter a valid email address",
+                        phone:{
+                            required: "Plese enter a phone number",
+                            digits: "Invalid phone number"
+                        },
+                        street: "Please enter a street address",
+                        city: "Please enter a city",
+                        state: "Select a state",
+                        zip: {
+                            required: "Please enter a zip",
+                            digits: "Invalid zip"
+				
+			},
+			creditCardNumber: {
+				required: "Please provide a credit card number for billing",
+				digits: "Invalid card number"
+                        }
+	});      
+        </script>
+        <title>Customer Information</title>
+        
     </head>
         <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="text-align: center; width: 500px; height: 500px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 700px; height: 500px; background-color: #ffff66; padding-top:25px;">
             <form id="addCustomer" name="addCustomer" method="POST" action="addCustomer" class="rockwell">
-                <fieldset>
+                <fieldset style="text-align:left; border-style:groove; border-width: 8px; border-color: green; width:500px; margin:auto;">
                     <legend><span class="rockwell"><h2>Enter your Information Below</h2></span></legend>
                 <div style="text-align: left;">
-                First Name: <input id="firstName" type="text" name="firstName" autofocus placeholder="Enter First Name" size="25"><br>
-                Last Name: <input id="lastName" type="text" name="lastName" placeholder="Enter Last Name" size="25"><br>
-                Email Address: <input id="email" type="text" name="email" placeholder="Enter E-Mail" size="45"><br>
-                Phone Number: <input id="phone" type="text" name="phone" placeholder="Enter Phone Number" size="20"><br>
-                Street: <input id="street" type="text" name="street" placeholder="Enter Street" size="50" ><br>
-                City: <input id="city" type="text" name="city" placeholder="Enter City" size="25" ><br>
+                First Name: <input id="firstName" type="text" name="firstName" autofocus placeholder="John" title="Your name is required." required size="25"><br>
+                Last Name: <input id="lastName" type="text" name="lastName" placeholder="Doe" title="Your Last name is required" required size="25"><br>
+                Email Address: <input id="email" type="text" name="email" placeholder="JohnLovesJava@java.net"  title="An email address is required" required size="45"><br>
+                Phone Number: <input id="phone" type="text" name="phone" placeholder="262-256-1458" title="A phone number is required" required  size="20"><br>
+                Street: <input id="street" type="text" name="street" placeholder="3456 W Main St." title="Street Address is required" required size="50" ><br>
+                City: <input id="city" type="text" name="city" placeholder="New Berlin" title="City is required" required size="25" ><br>
                 
-                State:<select name="state" id="state">
+                State:<select name="state" id="state" required>
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
                     <option value="AZ">AZ</option>
@@ -81,12 +139,12 @@
                     <option value="VA">VA</option>
                     <option value="WA">WA</option>
                     <option value="WV">WV</option>
-                    <option value="WI">WI</option>
+                    <option value="WI" selected>WI</option>
                     <option value="WY">WY</option>
                 </select><br>
                 
-                Zip: <input id="zip" type="text" name="zip" placeholder="Enter Zip" size="10"><br>
-                Credit Card Number: <input id="creditCardNumber" type="text" name="creditCardNumber" placeholder="Enter Credit Card Number" size="20"><br>
+                Zip: <input id="zip" type="text" name="zip" placeholder="53188" size="10" title="Zip is required" required digits><br>
+                Credit Card Number: <input id="creditCardNumber" type="text" name="creditCardNumber" placeholder="1256-6521-4785-9568" size="20" title="Credit Card is Required for Billing" required digits><br>
                 </div>
                 </fieldset><br>
                 <input class="button" id="submit" name="submit" type="submit" value="Submit">

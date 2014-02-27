@@ -23,7 +23,7 @@
                <input class="button" id="backToBooks" name="backToBooks" type="submit" value="Back to Books">
             </form><br>
             <form method="POST" action="checkout">
-               <input class="button" id="checkout" name="checkout" type="submit" value="Checkout">
+               <input class="button" id="checkout" name="checkout" type="submit" value="View Cart">
             </form>
         </div>
 </html>
