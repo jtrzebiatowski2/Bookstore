@@ -14,6 +14,7 @@ import model.BookOrderService;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 @WebServlet(name = "AdminAddBookController", urlPatterns = {"/adminAddBook"})
 public class AdminAddBookController extends HttpServlet {

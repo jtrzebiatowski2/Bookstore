@@ -9,9 +9,34 @@ import java.util.List;
  */
 public interface BookDAOStrategy {
     
+    /**
+     *
+     * @return
+     */
     public abstract List<Book> getBookList();
+
+    /**
+     *
+     * @param book
+     */
     public abstract void addBook(Book book);
+
+    /**
+     *
+     * @param book
+     */
     public abstract void updateBook(Book book);
+
+    /**
+     *
+     * @param book
+     */
     public abstract void deleteBook(Book book);
+
+    /**
+     *
+     * @param bookID
+     * @return
+     */
     public abstract Book getBookByID(int bookID);
 }

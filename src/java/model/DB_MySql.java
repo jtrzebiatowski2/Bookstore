@@ -22,9 +22,18 @@ public class DB_MySql implements DBAccessor{
     
     private Connection connection;
     
+    /**
+     *
+     */
     public DB_MySql(){
     }
-    
+    /**
+     * @param connection
+     * @param tableName
+     * @param columnNames
+     * @throws SQLException
+     * @return PreparedStatement
+    */
     private PreparedStatement constructInsertSQL(Connection connection, String tableName, List columnNames)throws SQLException{
         StringBuilder sqlString = new StringBuilder("Insert into ");
         sqlString.append(tableName).append(" (");
@@ -39,7 +48,14 @@ public class DB_MySql implements DBAccessor{
 	final String completeSQL=(sqlString.toString()).substring(0,(sqlString.toString()).lastIndexOf(", ")) + ")";
 	return connection.prepareStatement(completeSQL);
     }
-    
+    /**
+     * @param connection
+     * @param tableName
+     * @param columnNames
+     * @param whereField
+     * @throws SQLException
+     * @return PreparedStatement
+    */
     private PreparedStatement constructUpdateSQL(Connection connection, String tableName, List columnNames, String whereField)throws SQLException{
         StringBuilder sqlString = new StringBuilder("Update ");
         sqlString.append(tableName).append(" Set ");
@@ -53,6 +69,13 @@ public class DB_MySql implements DBAccessor{
 		return connection.prepareStatement(completeSQL);
     }
     
+    /**
+     * @param connection
+     * @param tableName
+     * @param columnNames
+     * @throws SQLException
+     * @return PreparedStatement
+    */
     private PreparedStatement constructDeleteSQL(Connection connection, String tableName, String whereField) throws SQLException{
         StringBuilder sqlString = new StringBuilder("Delete From ");
         sqlString.append(tableName);
@@ -64,6 +87,16 @@ public class DB_MySql implements DBAccessor{
 		return connection.prepareStatement(completeSQL);
     }
    
+    /**
+     *
+     * @param driverClassName
+     * @param url
+     * @param username
+     * @param password
+     * @throws IllegalArgumentException
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     @Override
     public void openConnection(String driverClassName, String url, String username, String password) throws IllegalArgumentException, ClassNotFoundException, SQLException {
                 String msg = "Please enter a valid URL!";
@@ -74,11 +107,23 @@ public class DB_MySql implements DBAccessor{
 		connection = DriverManager.getConnection(url, username, password);
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     @Override
     public void closeConnection() throws SQLException {
         connection.close();
     }
 
+    /**
+     *
+     * @param tableName
+     * @param closeConnection
+     * @return
+     * @throws SQLException
+     * @throws Exception
+     */
     @Override
     public List findAllRecords(String tableName, boolean closeConnection) throws SQLException, Exception {
         
@@ -126,6 +171,16 @@ public class DB_MySql implements DBAccessor{
                 return listOfRecords;
     }
     
+    /**
+     *
+     * @param tableName
+     * @param columnNames
+     * @param columnValues
+     * @param closeConnection
+     * @return
+     * @throws SQLException
+     * @throws Exception
+     */
     @Override
     public boolean insertRecord(String tableName, List columnNames, List columnValues, boolean closeConnection)throws SQLException, Exception{
         PreparedStatement preparedInsertStatement = null;
@@ -177,6 +232,18 @@ public class DB_MySql implements DBAccessor{
         
     }
     
+    /**
+     *
+     * @param tableName
+     * @param columnNames
+     * @param columnValues
+     * @param whereField
+     * @param whereValue
+     * @param closeConnection
+     * @return
+     * @throws SQLException
+     * @throws Exception
+     */
     @Override
     public int updateRecord(String tableName, List columnNames, List columnValues, 
             String whereField, Object whereValue, boolean closeConnection)throws SQLException, Exception{
@@ -235,6 +302,16 @@ public class DB_MySql implements DBAccessor{
 		return recordsAffected;
     }
     
+    /**
+     *
+     * @param tableName
+     * @param whereField
+     * @param whereValue
+     * @param closeConnection
+     * @return
+     * @throws SQLException
+     * @throws Exception
+     */
     @Override
     public int deleteRecord(String tableName, String whereField, Object whereValue, boolean closeConnection)throws SQLException, Exception{
         PreparedStatement preparedDeleteStatement = null;
@@ -279,6 +356,14 @@ public class DB_MySql implements DBAccessor{
 		return recordsDeleted;
         }
 
+    /**
+     *
+     * @param sqlStatement
+     * @param closeConnection
+     * @return
+     * @throws SQLException
+     * @throws Exception
+     */
     @Override
     public List findRecordsWithSQLString(String sqlStatement, boolean closeConnection)throws SQLException, Exception {
         Statement statement = null;

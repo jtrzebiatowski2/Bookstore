@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 public class CustomerDAO implements CustomerDAOStrategy {
     
@@ -20,10 +21,19 @@ public class CustomerDAO implements CustomerDAOStrategy {
     private static final String PASSWORD = "tiburon87";
     private static final String CUSTOMER_TABLE_NAME = "customer";
     
+    /**
+     *
+     */
     public CustomerDAO(){
         databaseAccessor = new DB_MySql();
     }
-     @Override
+
+    /**
+     *
+     * @return
+     * @throws RuntimeException
+     */
+    @Override
     public List<Customer> getCustomerList() throws RuntimeException {
         
         List<Customer> customers = new <Customer>ArrayList();
@@ -61,7 +71,11 @@ public class CustomerDAO implements CustomerDAOStrategy {
         
     }
 
-     @Override
+    /**
+     *
+     * @param customer
+     */
+    @Override
     public void addCustomer(Customer customer){
         try {
             databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
@@ -104,6 +118,10 @@ public class CustomerDAO implements CustomerDAOStrategy {
         
     }
 
+    /**
+     *
+     * @param customer
+     */
     @Override
     public void updateCustomer(Customer customer){
         try {
@@ -149,6 +167,10 @@ public class CustomerDAO implements CustomerDAOStrategy {
         
     }
 
+    /**
+     *
+     * @param customer
+     */
     @Override
     public void deleteCustomer(Customer customer){
         try {

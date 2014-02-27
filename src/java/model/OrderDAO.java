@@ -1,10 +1,8 @@
 package model;
 
 import java.sql.SQLException;
-import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import static java.util.Calendar.DATE;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,11 +27,19 @@ public class OrderDAO implements OrderDAOStrategy {
     private static final String ORDERS_BY_DATE_RANGE_BEGIN = "Select * FROM book_order WHERE order_date BETWEEN ";
     private static final String ORDER_BY_DATE_RANGE_END = " AND ";
     
+    /**
+     *
+     */
     public OrderDAO(){
         databaseAccessor = new DB_MySql();
     }
-    
-     @Override
+
+    /**
+     *
+     * @return
+     * @throws RuntimeException
+     */
+    @Override
     public List<Order> getOrders() throws RuntimeException {
         SimpleDateFormat formatter =new SimpleDateFormat("yyyy-MM-dd");
         List<Order> orders = new <Order>ArrayList();
@@ -68,6 +74,10 @@ public class OrderDAO implements OrderDAOStrategy {
         
     }
     
+    /**
+     *
+     * @param order
+     */
     @Override
     public void addOrder(Order order){
         try {
@@ -103,6 +113,11 @@ public class OrderDAO implements OrderDAOStrategy {
         
     }
 
+    /**
+     *
+     * @param customerID
+     * @return
+     */
     @Override
     public List<CustomerOrderDTO> getOrderByCustomerID(int customerID) {
             SimpleDateFormat formatter =new SimpleDateFormat("yyyy-MM-dd");
@@ -154,6 +169,10 @@ public class OrderDAO implements OrderDAOStrategy {
         return values;
     }
 
+    /**
+     *
+     * @param order
+     */
     @Override
     public void updateOrder(Order order) {
         try {
@@ -191,6 +210,12 @@ public class OrderDAO implements OrderDAOStrategy {
         
     }
 
+    /**
+     *
+     * @param date1
+     * @param date2
+     * @return
+     */
     @Override
     public List<Order> getOrdersByDateRange(String date1, String date2) {
         SimpleDateFormat formatter =new SimpleDateFormat("yyyy-MM-dd");
@@ -228,6 +253,10 @@ public class OrderDAO implements OrderDAOStrategy {
         return orders;
     }
 
+    /**
+     *
+     * @param order
+     */
     @Override
     public void deleteOrder(Order order) {
          try {

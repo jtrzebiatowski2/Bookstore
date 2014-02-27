@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 @WebServlet(name = "AdminToolsController", urlPatterns = {"/admin"})
 public class AdminToolsController extends HttpServlet {

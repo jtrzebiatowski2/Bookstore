@@ -23,10 +23,18 @@ public class BookOrderDAO implements BookDAOStrategy{
     private static final String BOOK_BY_ID = "SELECT book_id,title, price, description, image, author"
             + " FROM book WHERE book_id = ";
     
+    /**
+     *
+     */
     public BookOrderDAO(){
         databaseAccessor = new DB_MySql();
     }
 
+    /**
+     *
+     * @return
+     * @throws RuntimeException
+     */
     @Override
     public List<Book> getBookList() throws RuntimeException {
         
@@ -60,6 +68,10 @@ public class BookOrderDAO implements BookDAOStrategy{
         
     }
     
+    /**
+     *
+     * @param book
+     */
     @Override
     public void addBook(Book book){
         try {
@@ -95,6 +107,10 @@ public class BookOrderDAO implements BookDAOStrategy{
         
     }
     
+    /**
+     *
+     * @param book
+     */
     @Override
     public void updateBook(Book book){
         try {
@@ -132,6 +148,10 @@ public class BookOrderDAO implements BookDAOStrategy{
         
     }
     
+    /**
+     *
+     * @param book
+     */
     @Override
     public void deleteBook(Book book){
         try {
@@ -150,8 +170,11 @@ public class BookOrderDAO implements BookDAOStrategy{
         }
     }
 
-        
-
+    /**
+     *
+     * @param bookID
+     * @return
+     */
     @Override
     public Book getBookByID(int bookID) {
         List<Map> data = new ArrayList<Map>();

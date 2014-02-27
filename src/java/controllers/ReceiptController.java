@@ -1,8 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.BookOrderService;
 import model.CustomerOrderDTO;
-import model.Order;
 
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 @WebServlet(name = "receiptController", urlPatterns = {"/receipt"})
 public class ReceiptController extends HttpServlet {

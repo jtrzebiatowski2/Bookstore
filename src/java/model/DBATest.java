@@ -10,8 +10,15 @@ import java.util.List;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 public class DBATest {
+
+    /**
+     *
+     * @param args
+     * @throws ParseException
+     */
     public static void main(String[] args) throws ParseException {
         
 //        BookOrderDAO testDao = new BookOrderDAO();
@@ -75,7 +82,7 @@ public class DBATest {
         
 //        System.out.print(testDao3.getOrderByCustomerID(1).toString());
         
-       BookOrderService bos = new BookOrderService();
+//      BookOrderService bos = new BookOrderService();
 //        
 //        System.out.print(bos.getBooks().toString());
         

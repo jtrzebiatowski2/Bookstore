@@ -15,6 +15,7 @@ import model.BookOrderService;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 @WebServlet(name = "BookDescriptionController", urlPatterns = {"/description"})
 public class BookDescriptionController extends HttpServlet {

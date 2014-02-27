@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
     private final DBAccessor databaseAccessor;
@@ -20,11 +21,20 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
     private static final String ORDER_DETAIL_TABLE_NAME = "order_details";
     private static final String SUM_OF_ORDER_FROM_ORDER_DETAILS = "SELECT sum(total) FROM order_details WHERE order_id = ";
     private static final String ORDER_DETAILS_BY_ORDERID = "SELECT * FROM order_details WHERE order_id = ";
+
+    /**
+     *
+     */
     public OrderDetailsDAO(){
         databaseAccessor = new DB_MySql();
     }
-    
-        @Override
+
+    /**
+     *
+     * @return
+     * @throws RuntimeException
+     */
+    @Override
     public List<OrderDetail> getOrderDetails() throws RuntimeException {
         
         List<OrderDetail> orderDetails = new <OrderDetail>ArrayList();
@@ -56,6 +66,10 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
         
     }
     
+    /**
+     *
+     * @param orderDetail
+     */
     @Override
     public void addOrderDetail(OrderDetail orderDetail){
         try {
@@ -89,6 +103,11 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
         
     }
 
+    /**
+     *
+     * @param order_id
+     * @return
+     */
     @Override
     public double getOrderTotal(int order_id) {
         double total = 0;
@@ -115,6 +134,11 @@ public class OrderDetailsDAO implements OrderDetailsDAOStrategy{
       return total;
     }
 
+    /**
+     *
+     * @param order_id
+     * @return
+     */
     @Override
     public List<OrderDetail> getOrderDetails(int order_id) {
         List<OrderDetail> orderDetails = new <OrderDetail>ArrayList();

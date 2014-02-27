@@ -23,6 +23,7 @@ import model.OrderDetail;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 @WebServlet(name = "AddBookController", urlPatterns = {"/addBook"})
 public class AddBookController extends HttpServlet {

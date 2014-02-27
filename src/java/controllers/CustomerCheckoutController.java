@@ -16,6 +16,7 @@ import model.OrderDetail;
 /**
  *
  * @author J-Tron
+ * @version 1.0
  */
 @WebServlet(name = "checkoutController", urlPatterns = {"/checkout"})
 public class CustomerCheckoutController extends HttpServlet {
