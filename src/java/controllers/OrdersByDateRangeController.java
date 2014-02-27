@@ -57,7 +57,6 @@ public class OrdersByDateRangeController extends HttpServlet {
             throws ServletException, IOException {
          response.setContentType("text/html");
 
-         
         BookOrderService bos = new BookOrderService();
          
         String date1 = request.getParameter("startDate");

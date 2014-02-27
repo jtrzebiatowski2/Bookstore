@@ -57,7 +57,7 @@
             <form method='POST' action="receipt">
                     <input class="button" type="submit" value="Checkout">
             </form> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <form method='POST' action="">
+            <form method='POST' action="cancel">
                     <input class="button" type="submit" value="Cancel Order">
             </form>
             </fieldset>

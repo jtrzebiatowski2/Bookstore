@@ -14,7 +14,7 @@ public class CustomerOrderDTO{
     private double orderTotal;
     private double orderGrandTotal;
     private double tax;
-    private Date date;
+    private String date;
     private String street;
     private String city;
     private String state;
@@ -25,7 +25,7 @@ public class CustomerOrderDTO{
     }
 
     public CustomerOrderDTO(String lastName, String firstName, int customerID, int orderID, double orderTotal, double orderGrandTotal, 
-            double tax, Date date, String street, String city, String state, String zip, String creditCardNumber) {
+            double tax, String date, String street, String city, String state, String zip, String creditCardNumber) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.customerID = customerID;
@@ -89,11 +89,11 @@ public class CustomerOrderDTO{
         return orderTotal;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -62,6 +63,21 @@ public class AddBookController extends HttpServlet {
         
         Integer custID = (Integer)(httpSession.getAttribute("session_customer_id"));
         
+        List<CustomerOrderDTO> details = bos.getOrderByCustomerID(custID);
+        
+        if(details.isEmpty()){
+        Order initialOrder = new Order();
+        initialOrder.setCustomer_id(custID);
+        Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNow = formatter.format(date);
+        initialOrder.setOrderDate(dateNow);
+        initialOrder.setTotal(0.0);
+        initialOrder.setGrandTotal(0.0);
+        initialOrder.setTax(0.0);
+        bos.addOrder(initialOrder);  
+        }
+
         Integer bookID = (Integer)(httpSession.getAttribute("session_book_id")) + 2;
         
         Book orderedBook = (Book)bos.getBookByID(bookID);

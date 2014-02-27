@@ -18,10 +18,10 @@
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="background-color: #ffff66; height: 400px; width:600px; text-align: center;">
+        <div class="infoDivs" style="background-color: #ffff66; height: 500px; width:600px; text-align: center;">
             
             <form method="POST" action="description" class='center'><br>
-                <fieldset><legend style="text-align:left">Select Book & Click Description for Details</legend>
+                <fieldset><legend style="text-align:left"><h3>Select Book & Click Description for Details</h3></legend>
                 <h2 class='rockwell'>Book List</h2>
                 <select name='bookList'>
                      <%
@@ -36,10 +36,15 @@
                 <input class="button" id="descriptionSubmit" name="descriptionSubmit" type="submit" value="Get Description">
                 </fieldset>
             </form>
-                <fieldset><legend style="text-align:left">Back to Homepage</legend>
+                <fieldset><legend style="text-align:left"><h3>Back to Homepage</h3></legend>
                 <br>
                 <a href="index.html"><button class="button">Home Page</button></a>
-                </fieldset>
+                </fieldset><br>
+                <fieldset><legend style="text-align:left"><h3>Checkout</h3></legend>
+                <form method="POST" action="checkout">
+               <input class="button" id="checkout" name="checkout" type="submit" value="Checkout">
+                </form>
+                 </fieldset>
         </div>
         <h1></h1>
     </body>

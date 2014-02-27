@@ -134,7 +134,8 @@ public class OrderDAO implements OrderDAOStrategy {
             double grandTotal = (Double)m.get("grand_total");
             customerOrderDTO.setOrderGrandTotal(grandTotal);
             Date date = (Date)m.get("order_date");
-            customerOrderDTO.setDate(date);
+            String orderDateS = formatter.format(date);
+            customerOrderDTO.setDate(orderDateS);
             String street = m.get("street").toString();
             customerOrderDTO.setStreet(street);
             String city = m.get("city").toString();
@@ -226,5 +227,24 @@ public class OrderDAO implements OrderDAOStrategy {
             
         return orders;
     }
+
+    @Override
+    public void deleteOrder(Order order) {
+         try {
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            
+            databaseAccessor.deleteRecord(ORDER_TABLE_NAME, "order_id", order.getOrder_id(), true);
+            
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
 }

@@ -91,4 +91,8 @@ public class BookOrderService {
         return orderDAOStrategy.getOrdersByDateRange(date1, date2);
     }
     
+    public void deleteOrder(Order order){
+        orderDAOStrategy.deleteOrder(order);
+    }
+    
 }

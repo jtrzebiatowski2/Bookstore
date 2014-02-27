@@ -53,7 +53,7 @@
             </form><br>
             <form id="ordersByDate" name="ordersByDate" method="POST" action="getOrders">
                 <fieldset>
-                     <legend><span class="rockwell"><h2>Enter Date Range to get Orders</h2></span></legend>
+                     <legend style="text-align:left;"><span class="rockwell"><h2>Enter Date Range to get Orders</h2></span></legend>
                      <div style="text-align:left">
                          Start Date: <input type="date" id="startDate" name="startDate" placeholder="Enter Begin Date">
                          End Date: <input type="date" id="endDate" name="endDate" placeholder="Enter End Date">

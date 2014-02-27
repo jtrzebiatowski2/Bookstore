@@ -67,7 +67,7 @@ public class ReceiptController extends HttpServlet {
         String customerLast = customerOrder.getLastName();
         request.setAttribute("customerLast", customerLast);
         
-        Date orderDate = customerOrder.getDate();
+        String orderDate = customerOrder.getDate();
         request.setAttribute("orderDate", orderDate);
         
         int orderID = customerOrder.getOrderID();

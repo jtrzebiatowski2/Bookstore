@@ -11,16 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.BookOrderService;
-import model.OrderDetail;
+import model.CustomerOrderDTO;
+import model.Order;
 
 /**
  *
  * @author J-Tron
  */
-@WebServlet(name = "checkoutController", urlPatterns = {"/checkout"})
-public class CheckoutController extends HttpServlet {
-    private static final String CUSTOMER_CHECKOUT_PAGE = "customerCheckout.jsp";
-    private HttpSession session;
+@WebServlet(name = "CancelOrderController", urlPatterns = {"/cancel"})
+public class CancelOrderController extends HttpServlet {
+    HttpSession session;
+    private static final String ORDER_CANCEL_CONFIRMATION_PAGE = "orderCancel.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -50,18 +51,29 @@ public class CheckoutController extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html");
-        
         session = request.getSession(true);
         
         BookOrderService bos = new BookOrderService();
+        Integer customerID = (Integer)session.getAttribute("session_customer_id");
         
-        List<OrderDetail> orderDetails = bos.getOrderDetailsByOrderID(
-                Integer.valueOf(session.getAttribute("session_order_id").toString()));
+        List<CustomerOrderDTO> orderDetails = bos.getOrderByCustomerID(customerID);
         
-        request.setAttribute("customerOrderDetails", orderDetails);
+        CustomerOrderDTO thisOrder = orderDetails.get(0);
+        
+        Order order = new Order();
+        order.setOrder_id(thisOrder.getOrderID());
+        order.setCustomer_id(thisOrder.getCustomerID());
+        order.setTotal(thisOrder.getOrderTotal());
+        order.setOrderDate(thisOrder.getDate());
+        order.setTax(thisOrder.getTax());
+        order.setGrandTotal(thisOrder.getOrderGrandTotal());
+        
+        bos.deleteOrder(order);
+        
+        
         
         RequestDispatcher view =
-            request.getRequestDispatcher(CUSTOMER_CHECKOUT_PAGE);
+        request.getRequestDispatcher(ORDER_CANCEL_CONFIRMATION_PAGE);
         view.forward(request, response);
         
         
