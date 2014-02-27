@@ -14,7 +14,7 @@ import java.util.Date;
 public class Order {
     private int order_id;
     private int customer_id;
-    private Date orderDate;
+    private String orderDate;
     private double total;
     private double tax;
     private double grandTotal;
@@ -22,7 +22,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int order_id, int customer_id, Date orderDate, double total, double tax, double grandTotal) {
+    public Order(int order_id, int customer_id, String orderDate, double total, double tax, double grandTotal) {
         this.order_id = order_id;
         this.customer_id = customer_id;
         this.orderDate = orderDate;
@@ -47,7 +47,7 @@ public class Order {
         return grandTotal;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
@@ -71,7 +71,7 @@ public class Order {
         this.grandTotal = grandTotal;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -84,6 +85,10 @@ public class BookOrderService {
     
     public List<OrderDetail> getOrderDetailsByOrderID(int order_id){
         return orderDetailsStrategy.getOrderDetails(order_id);
+    }
+    
+    public List<Order> getOrdersByDateRange(String date1, String date2){
+        return orderDAOStrategy.getOrdersByDateRange(date1, date2);
     }
     
 }

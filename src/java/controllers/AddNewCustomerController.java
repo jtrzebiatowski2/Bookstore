@@ -2,8 +2,10 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -112,7 +114,10 @@ public class AddNewCustomerController extends HttpServlet {
          
         Order initialOrder = new Order();
         initialOrder.setCustomer_id(custID);
-        initialOrder.setOrderDate(Calendar.getInstance().getTime());
+        Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateNow = formatter.format(date);
+        initialOrder.setOrderDate(dateNow);
         initialOrder.setTotal(0.0);
         initialOrder.setGrandTotal(0.0);
         initialOrder.setTax(0.0);

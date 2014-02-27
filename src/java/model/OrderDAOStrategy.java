@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,5 +12,6 @@ public interface OrderDAOStrategy {
     public abstract void addOrder(Order order);
     public abstract List<CustomerOrderDTO> getOrderByCustomerID(int customerID);
     public abstract void updateOrder(Order order);
+    public abstract List<Order> getOrdersByDateRange(String date1, String date2);
     
 }

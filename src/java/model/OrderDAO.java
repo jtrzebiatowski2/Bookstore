@@ -1,7 +1,10 @@
 package model;
 
 import java.sql.SQLException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import static java.util.Calendar.DATE;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +23,11 @@ public class OrderDAO implements OrderDAOStrategy {
     private static final String PASSWORD = "tiburon87";
     private static final String ORDER_TABLE_NAME = "book_order";
     private static final String ORDER_BY_CUSTOMER_ID = "SELECT customer.last_name, customer.first_name, customer.customer_id,"
-            + "book_order.order_id, book_order.total, book_order.grand_total "
+            + "book_order.order_id, book_order.total, book_order.grand_total, book_order.order_date, customer.street, customer.city, customer.state, customer.zip, customer.credit_card_number, book_order.tax  "
             + "FROM book_order join customer on customer.customer_id = book_order.customer_id "
             + "WHERE customer.customer_id = ";
+    private static final String ORDERS_BY_DATE_RANGE_BEGIN = "Select * FROM book_order WHERE order_date BETWEEN ";
+    private static final String ORDER_BY_DATE_RANGE_END = " AND ";
     
     public OrderDAO(){
         databaseAccessor = new DB_MySql();
@@ -30,7 +35,7 @@ public class OrderDAO implements OrderDAOStrategy {
     
      @Override
     public List<Order> getOrders() throws RuntimeException {
-        
+        SimpleDateFormat formatter =new SimpleDateFormat("yyyy-MM-dd");
         List<Order> orders = new <Order>ArrayList();
         
         try{
@@ -40,7 +45,9 @@ public class OrderDAO implements OrderDAOStrategy {
             Order order = new Order();
             order.setOrder_id((Integer)(order_list.get(i).get("order_id")));
             order.setCustomer_id((Integer)(order_list.get(i).get("customer_id")));
-            order.setOrderDate((Date)(order_list.get(i).get("order_date")));
+            Date date= (Date)order_list.get(i).get("order_date");
+            String orderDateS = formatter.format(date);
+            order.setOrderDate(orderDateS);
             order.setTax((Double)(order_list.get(i).get("tax")));
             order.setGrandTotal((Double)(order_list.get(i).get("grand_total")));
             
@@ -98,6 +105,7 @@ public class OrderDAO implements OrderDAOStrategy {
 
     @Override
     public List<CustomerOrderDTO> getOrderByCustomerID(int customerID) {
+            SimpleDateFormat formatter =new SimpleDateFormat("yyyy-MM-dd");
             List<Map> joinData = new ArrayList<Map>();
             List<CustomerOrderDTO> values = new ArrayList<CustomerOrderDTO>();
             
@@ -125,6 +133,20 @@ public class OrderDAO implements OrderDAOStrategy {
             customerOrderDTO.setOrderTotal(orderTotal);
             double grandTotal = (Double)m.get("grand_total");
             customerOrderDTO.setOrderGrandTotal(grandTotal);
+            Date date = (Date)m.get("order_date");
+            customerOrderDTO.setDate(date);
+            String street = m.get("street").toString();
+            customerOrderDTO.setStreet(street);
+            String city = m.get("city").toString();
+            customerOrderDTO.setCity(city);
+            String state = m.get("state").toString();
+            customerOrderDTO.setState(state);
+            String zip = m.get("zip").toString();
+            customerOrderDTO.setZip(zip);
+            String creditCardNumber = m.get("credit_card_number").toString();
+            customerOrderDTO.setCreditCardNumber(creditCardNumber);
+            double tax = (Double)m.get("tax");
+            customerOrderDTO.setTax(tax);
             values.add(customerOrderDTO);
         }
 
@@ -166,6 +188,43 @@ public class OrderDAO implements OrderDAOStrategy {
             Logger.getLogger(BookOrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+
+    @Override
+    public List<Order> getOrdersByDateRange(String date1, String date2) {
+        SimpleDateFormat formatter =new SimpleDateFormat("yyyy-MM-dd");
+        List<Map> joinData = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
+        
+        try{
+            databaseAccessor.openConnection(DRIVER, URL, USERNAME, PASSWORD);
+            joinData = databaseAccessor.findRecordsWithSQLString(ORDERS_BY_DATE_RANGE_BEGIN + "'" + date1 + "'" 
+                    + ORDER_BY_DATE_RANGE_END + "'" + date2 + "'", true);
+             
+        }catch (Exception ex) {
+            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            Order order = null;
+            
+            for(Map o: joinData){
+                order = new Order();
+                int orderID = (Integer)o.get("order_id");
+                order.setOrder_id(orderID);
+                int custmomerID = (Integer)o.get("customer_id");
+                order.setCustomer_id(custmomerID);
+                double orderTotal = (Double)o.get("total");
+                order.setTotal(orderTotal);
+                Date orderDate = (Date)o.get("order_date");
+                String orderDateS = formatter.format(orderDate);
+                order.setOrderDate(orderDateS);
+                double tax = (Double)o.get("tax");
+                order.setTax(tax);
+                double grandTotal = (Double)o.get("grand_total");
+                order.setGrandTotal(grandTotal);
+                orders.add(order);
+            }
+            
+        return orders;
     }
     
 }

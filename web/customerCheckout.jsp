@@ -21,7 +21,7 @@
         <div class='center'>
             <img src='Images/bookstoreBanner.png' alt='titleBanner'>
         </div>
-        <div class="infoDivs" style="text-align: center; width: 500px; height: 600px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 600px; height: 600px; background-color: #ffff66; padding-top:25px;">
             <fieldset><legend style="text-align:left;"><h3>Review Your Order</h3></legend>
             <h1>Order Details</h1>
             <table style="border-style: groove; border-color:sandybrown; border-width:3px; margin:auto;">
@@ -54,7 +54,7 @@
             
             </h2>
             <br>
-            <form method='POST' action="">
+            <form method='POST' action="receipt">
                     <input class="button" type="submit" value="Checkout">
             </form> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <form method='POST' action="">

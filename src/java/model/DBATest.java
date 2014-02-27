@@ -1,6 +1,10 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -8,7 +12,7 @@ import java.util.List;
  * @author J-Tron
  */
 public class DBATest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         
 //        BookOrderDAO testDao = new BookOrderDAO();
 //        
@@ -71,7 +75,7 @@ public class DBATest {
         
 //        System.out.print(testDao3.getOrderByCustomerID(1).toString());
         
-//        BookOrderService bos = new BookOrderService();
+       BookOrderService bos = new BookOrderService();
 //        
 //        System.out.print(bos.getBooks().toString());
         
@@ -82,6 +86,18 @@ public class DBATest {
 //       List<OrderDetail> orders = bos.getOrderDetailsByOrderID(24);
         
 //       System.out.print(orders.toString());
-        
+//            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//            String date1 = ("2014-02-20");
+//            String date2 = ("2014-02-27");
+//            
+//            Date convertedDate1 = (Date)formatter.parse(date1);
+//            Date convertedDate2= (Date)formatter.parse(date2);
+//            
+//         
+//         List<Order> orders = bos.getOrdersByDateRange(convertedDate1, convertedDate2);
+//         
+//         for(Order o: orders){
+//             System.out.print(o.getCustomer_id() + "\n");
+//         }
     }
 }
