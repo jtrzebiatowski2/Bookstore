@@ -23,6 +23,9 @@ private static final String BOOK_ORDER_PAGE = "/bookOrderPage.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method simply retrieves the book list from the database and forwards it to the jsp where
+     * the books are displayed in a drop down list for user selection.
+     * 
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request

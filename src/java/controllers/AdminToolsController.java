@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +19,9 @@ private static final String ADMIN_TOOLS_PAGE= "/adminToolsPage.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method simply forwards a web request from an administrator to the page where the tools to update and find
+     * records may be found. If security were required this class would make a user sign in and validate the credentials.
+     * 
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request

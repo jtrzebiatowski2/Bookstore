@@ -1,9 +1,7 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +44,10 @@ public class AddBookController extends HttpServlet {
     }
 
     /**
+     * This method retrieves the current user's id and finds if an order exists. If it does it gets the selected
+     * book information, creates a book, and then adds the order information as an order detail corresponding
+     * to the appropriate customer order. The order detail is added and from that the order totals are all updated.
+     * 
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request

@@ -24,6 +24,9 @@ public class CustomerCheckoutController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method retrieves the list of order details based upon the current user's customer id. It locates the order,
+     * uses that to get the order details and sends a list of this info to the jsp page for proper display.
+     * 
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request

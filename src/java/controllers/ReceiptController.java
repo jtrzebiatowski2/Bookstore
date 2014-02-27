@@ -26,6 +26,10 @@ public class ReceiptController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method retrieves the CustomerDTO object based upon the current user's customer ID.
+     * From the DTO object all properties necessary to populate a receipt are forwarded to the receipt jsp
+     * page for display.
+     * 
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request

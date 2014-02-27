@@ -23,6 +23,9 @@ public class OrdersByDateRangeController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method takes the input from the two new HTML5 date inputs as strings in date format. It then retrieves all
+     * orders from the database within the date range and forwards that list to the jsp page.
+     * 
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request

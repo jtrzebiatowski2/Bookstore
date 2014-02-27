@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 /**
  *An example of an 'Entity' class. An entity class is a representation of
  * a database table, where the class name is similar to the table name and 
@@ -157,6 +155,17 @@ public class Order {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
     
 }

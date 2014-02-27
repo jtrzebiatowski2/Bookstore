@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,6 +23,9 @@ private static final String BOOK_DESCRIPTION_PAGE = "/bookDescriptionPage.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method get the list of books from the database, sets request attributes of the book's properties for use
+     * in the jsp display page to be used accordingly there.
+     * 
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request

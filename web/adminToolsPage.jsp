@@ -24,7 +24,7 @@
     </head>
     <body style="background-image: url(Images/bookstoreBackground.jpg)">
         <div class='center'><img src='Images/bookstoreBanner.png' alt='titleBanner'></div>
-        <div class="infoDivs" style="text-align: center; width: 700px; height: 550px; background-color: #ffff66; padding-top:25px;">
+        <div class="infoDivs" style="text-align: center; width: 700px; height: 650px; background-color: #ffff66; padding-top:25px;">
             <form id="addBook" name="addBook" method="POST" action="adminAddBook">
                 <fieldset style="text-align:left; border-style:groove; border-width: 8px; border-color: green; width:500px; margin:auto;">
                     <legend><span class="rockwell"><h2>Enter New Book Information</h2></span></legend>
@@ -51,7 +51,8 @@
                      </div><br>
                      <div style="text-align:center;">
                      <input class="button" id="getOrders" name="getOrders" type="submit" value="Get Orders">
-                     </div>
-            </form>      
-        </div>    
+                     </div><br>
+                </fieldset>         
+             </div>
+            </form><br>  
 </html>

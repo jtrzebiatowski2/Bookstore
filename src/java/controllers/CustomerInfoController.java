@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,6 +32,9 @@ public class CustomerInfoController extends HttpServlet {
     }
 
     /**
+     * This method simply forwards the request for a customer signup page to a jsp page containing the new customer 
+     * sign up form.
+     * 
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request

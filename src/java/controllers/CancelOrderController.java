@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +39,9 @@ public class CancelOrderController extends HttpServlet {
     }
 
     /**
+     * This method is used when the cancel order button is clicked at customer checkout. It simply finds the generated
+     * order based upon the current user's customer id and deletes the order record from the database.
+     * 
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request

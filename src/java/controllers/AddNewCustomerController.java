@@ -44,6 +44,10 @@ public class AddNewCustomerController extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
+     * 
+     * This method retrieves values from the text fields in the customer form. Adds the new customer to the database,
+     * and then finds the newly added customer and sets the current session variables to this customer's information.
+     * An initial order is created to store order details should they be added, the order is destroyed if an order is canceled.
      *
      * @param request servlet request
      * @param response servlet response

@@ -22,8 +22,11 @@ private static final String ADDED_BOOK_PAGE = "bookAdded.jsp";
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
+     * This method retrieves the values from the new book form. It creates a new book and uses a method to add
+     * the new book to the database.
+     * 
      * Handles the HTTP <code>GET</code> method.
-     *
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
