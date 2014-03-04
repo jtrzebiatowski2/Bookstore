@@ -18,9 +18,8 @@
         <script src="jquery.js" type='text/javascript'></script>
         <link rel='stylesheet' type='text/css' href='bookstoreHome.css'>
         <link rel="icon" type="image/png" href="Images/book-favicon.png">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            
-        <script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">          
+        <script type="text/javascript">
             $().ready(function() {
                 $("#addCustomer").validate();
             };

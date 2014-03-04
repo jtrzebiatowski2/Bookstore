@@ -56,7 +56,7 @@
                 out.print("<tr style= 'text-align: right; margin-left:0;'>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 14px;'>" 
                         + "Applicable Taxes: " + "<span style='color:#FF0000; font-size: 18px;'> $" + taxes + "</span>" + "</td>" + "</tr>");
                 out.print("<tr style= 'text-align: right; margin-left:0;'>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 20px;'>" 
-                        + "Grand Total: " + "<span style='border: 3px solid red; color:#FF0000; font-size: 26px;'> $" + grandTotal + "</span>" + "</td>" + "</tr>");
+                        + "Grand Total: " + "<span style='border: 3px solid red; color:#FF0000; font-size: 26px;'> $" + df.format(grandTotal) + "</span>" + "</td>" + "</tr>");
             %>
                 
             </table>

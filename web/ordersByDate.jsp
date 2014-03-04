@@ -4,6 +4,7 @@
     Author     : J-Tron
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Order"%>
 <%@page import="java.util.List"%>
@@ -35,13 +36,15 @@
                 
         <%
             List<Order> orderList = (List<Order>)request.getAttribute("orderList");
-            
+            DecimalFormat df = new DecimalFormat("0.00");
+            double totalCollectedForDateRange = 0;
             for(Order o : orderList){
              int customerID = o.getCustomer_id();
              int orderID = o.getOrder_id();
              double orderTotal = o.getTotal();
              double tax = o.getTax();
              double grandTotal = o.getGrandTotal();
+             totalCollectedForDateRange+= grandTotal;
              String orderDate = o.getOrderDate();
              out.print("<tr style='border-style: groove; border-color:#996633; border-width: 2px;'>");
              out.print("<td style='background-color:white; color:black; border-style: groove; border-color:#996633; border-width: 2px; '>" + orderID + "</td>");
@@ -52,6 +55,8 @@
              out.print("<td style='background-color: white; color:black; border-style: groove; border-color:#996633; border-width: 2px;'>" + "$" + grandTotal + "</td>");
              out.print("</tr>");
             };
+            out.print("<tr style= 'text-align: right;'>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td style= 'margin-left:0; text-align: right; font-weight:bolder; font-size: 20px;'>" 
+                        + "Total for Date Range: " + "<span style='border: 3px solid red; color:#FF0000; font-size: 26px;'> $" + df.format(totalCollectedForDateRange) + "</span>" + "</td>" + "</tr>");
             
             %>
          </fieldset>
